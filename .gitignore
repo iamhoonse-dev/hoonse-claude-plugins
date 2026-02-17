@@ -1,0 +1,8 @@
+# IDE
+.idea/
+
+# Agent Memory
+.claude/agent-memory/
+
+# Logs
+logs/

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "iamhoonse-claude-code-plugins",
+  "description": "코드 생성 및 코드 설명을 위한 개인용 Claude Code 플러그인 마켓플레이스",
+  "owner": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "hello-plugin",
+      "description": "코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용)",
+      "version": "0.0.1",
+      "author": {
+        "name": "iamhoonse",
+        "email": "iamhoonse+dev@gmail.com"
+      },
+      "source": "./plugins/hello-plugin",
+      "category": "development",
+      "homepage": "https://github.com/iamhoonse-dev/iamhoonse-claude-code-plugin"
+    }
+  ]
+}
