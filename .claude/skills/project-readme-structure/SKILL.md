@@ -32,9 +32,9 @@ user-invocable: false
    - 예시: 
       ```mermaid
       graph LR
-        A[iamhoonse-claude-code-plugins] --> B[.claude]
+        A[claude-code-plugins] --> B[.claude]
         B[.claude] --> B1[마켓플레이스 개발 시 사용되는 claude 설정 및 리소스]
-        A[iamhoonse-claude-code-plugins] --> C[plugins]
+        A[claude-code-plugins] --> C[plugins]
         C[plugins] --> D[plugin-a]
         C[plugins] --> E[plugin-b]
         D[plugin-a] --> D1[plugin-a의 주요 기능]

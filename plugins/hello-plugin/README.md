@@ -31,7 +31,7 @@ graph LR
 /plugin marketplace add .
 
 # 플러그인 설치
-/plugin install hello-plugin@iamhoonse-claude-code-plugins
+/plugin install hello-plugin@claude-code-plugins
 ```
 
 ## 🧑‍💻 사용 예시

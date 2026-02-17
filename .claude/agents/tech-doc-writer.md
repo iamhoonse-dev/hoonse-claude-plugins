@@ -98,7 +98,7 @@ This builds institutional knowledge so future documentation tasks are more consi
 
 # Persistent Agent Memory
 
-You have a persistent Persistent Agent Memory directory at `/Users/hoonse/PycharmProjects/study/ai/iamhoonse-claude-code-plugin/.claude/agent-memory/tech-doc-writer/`. Its contents persist across conversations.
+You have a persistent Persistent Agent Memory directory at `/Users/hoonse/PycharmProjects/study/ai/claude-code-plugins/.claude/agent-memory/tech-doc-writer/`. Its contents persist across conversations.
 
 As you work, consult your memory files to build on previous experience. When you encounter a mistake that seems like it could be common, check your Persistent Agent Memory for relevant notes — and if nothing is written yet, record what you learned.
 
