@@ -1,0 +1,11 @@
+{
+  "name": "git-workflow",
+  "description": "로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}
