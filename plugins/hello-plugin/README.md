@@ -6,12 +6,8 @@
 
 ```mermaid
 graph LR
-    A[hello-plugin] --> B[Hooks]
-    A --> C[Agents]
+    A[hello-plugin] --> C[Agents]
     A --> D[Skills]
-
-    B --> B1[PreToolUse<br/>도구 사용 로깅]
-    B --> B2[UserPromptSubmit<br/>프롬프트 로깅]
 
     C --> C1[code-improver<br/>코드 품질 개선]
 
@@ -95,13 +91,6 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 | fix-issue | inline | GitHub 이슈를 읽고 요구사항을 파악하여 코딩 표준에 따라 수정을 구현하고, 테스트 작성 후 커밋합니다. |
 | summarize-pr | fork / Explore | 풀 요청의 diff, 댓글, 변경된 파일을 분석하여 변경 사항을 요약합니다. |
 | visualize-codebase | inline | 코드베이스의 파일 구조를 축소 가능한 디렉토리로 보여주는 대화형 HTML 트리 뷰를 생성합니다. |
-
-### 🪝 Hooks
-
-| 이벤트 | 설명 |
-|--------|------|
-| PreToolUse | 도구 사용 내역을 git 사용자, 작업 브랜치, 세션별로 구분하여 로그 파일에 기록합니다. |
-| UserPromptSubmit | 사용자 프롬프트를 git 사용자, 작업 브랜치, 세션별로 구분하여 로그 파일에 기록합니다. |
 
 ### 🤖 Agents
 

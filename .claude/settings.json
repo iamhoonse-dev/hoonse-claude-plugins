@@ -1,24 +1,5 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/scripts/log-tool-use.sh"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/scripts/log-user-prompt.sh"
-          }
-        ]
-      }
-    ]
+  "enabledPlugins": {
+    "claude-logger@hoonse-claude-plugins": true
   }
 }

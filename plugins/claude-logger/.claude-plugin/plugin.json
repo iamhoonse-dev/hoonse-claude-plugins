@@ -1,0 +1,11 @@
+{
+  "name": "claude-logger",
+  "description": "Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}

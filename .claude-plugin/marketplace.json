@@ -8,6 +8,18 @@
   },
   "plugins": [
     {
+      "name": "claude-logger",
+      "description": "Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인",
+      "version": "0.0.1",
+      "author": {
+        "name": "iamhoonse",
+        "email": "iamhoonse+dev@gmail.com"
+      },
+      "source": "./plugins/claude-logger",
+      "category": "logging",
+      "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+    },
+    {
       "name": "hello-plugin",
       "description": "코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용)",
       "version": "0.0.1",
