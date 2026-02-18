@@ -30,20 +30,20 @@ graph LR
 
 ```bash
 # 마켓플레이스 등록
-/plugin marketplace add iamhoonse-dev/claude-code-plugins
+/plugin marketplace add iamhoonse-dev/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@claude-code-plugins
+/plugin install hello-plugin@hoonse-claude-plugins
 ```
 
 ### 로컬 경로에서 추가
 
 ```bash
 # 마켓플레이스 등록
-/plugin marketplace add /path/to/claude-code-plugins
+/plugin marketplace add /path/to/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@claude-code-plugins
+/plugin install hello-plugin@hoonse-claude-plugins
 ```
 
 ## 🧑‍💻 사용 예시

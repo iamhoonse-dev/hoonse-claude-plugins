@@ -1,4 +1,4 @@
-# 🧰 claude-code-plugins
+# 🧰 hoonse-claude-plugins
 
 {Project description}
 

@@ -1,4 +1,4 @@
-# 🧰 claude-code-plugins
+# 🧰 hoonse-claude-plugins
 
 코드 생성 및 코드 설명을 위한 개인용 Claude Code 플러그인 마켓플레이스
 
@@ -6,7 +6,7 @@
 
 ```mermaid
 graph LR
-    A[claude-code-plugins] --> B[.claude]
+    A[hoonse-claude-plugins] --> B[.claude]
     B --> B1[마켓플레이스 개발 시 사용되는<br/>claude 설정 및 리소스]
     A --> C[plugins]
     C --> D[hello-plugin]
@@ -21,20 +21,20 @@ graph LR
 
 ```bash
 # 마켓플레이스 등록
-/plugin marketplace add iamhoonse-dev/claude-code-plugins
+/plugin marketplace add iamhoonse-dev/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@claude-code-plugins
+/plugin install hello-plugin@hoonse-claude-plugins
 ```
 
 ### 로컬 경로에서 추가
 
 ```bash
 # 마켓플레이스 등록
-/plugin marketplace add /path/to/claude-code-plugins
+/plugin marketplace add /path/to/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@claude-code-plugins
+/plugin install hello-plugin@hoonse-claude-plugins
 ```
 
 ## 🧑‍💻 사용 예시

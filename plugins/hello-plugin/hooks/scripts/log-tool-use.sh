@@ -7,7 +7,7 @@ GIT_USER=$(git -C "$CLAUDE_PROJECT_DIR" config user.name 2>/dev/null || echo "un
 GIT_BRANCH=$(git -C "$CLAUDE_PROJECT_DIR" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 SESSION_ID=$(echo "$INPUT" | jq -r '.session_id')
 
-LOG_DIR="$CLAUDE_PROJECT_DIR/logs/claude-code-plugins/hello-plugin/$GIT_USER/$SESSION_ID"
+LOG_DIR="$CLAUDE_PROJECT_DIR/logs/hoonse-claude-plugins/hello-plugin/$GIT_USER/$SESSION_ID"
 LOG_FILE="$LOG_DIR/tool-use.log"
 
 mkdir -p "$LOG_DIR"
