@@ -26,9 +26,21 @@ graph LR
 
 이 플러그인을 사용하려는 프로젝트의 루트 디렉토리에서 아래 명령어를 실행합니다.
 
+### GitHub에서 추가
+
 ```bash
 # 마켓플레이스 등록
-/plugin marketplace add .
+/plugin marketplace add iamhoonse-dev/claude-code-plugins
+
+# 플러그인 설치
+/plugin install hello-plugin@claude-code-plugins
+```
+
+### 로컬 경로에서 추가
+
+```bash
+# 마켓플레이스 등록
+/plugin marketplace add /path/to/claude-code-plugins
 
 # 플러그인 설치
 /plugin install hello-plugin@claude-code-plugins
