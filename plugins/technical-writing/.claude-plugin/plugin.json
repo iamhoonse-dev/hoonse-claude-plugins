@@ -1,0 +1,11 @@
+{
+  "name": "technical-writing",
+  "description": "기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}

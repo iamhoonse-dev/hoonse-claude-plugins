@@ -13,6 +13,8 @@ graph LR
     D --> D1[도구 사용 및 프롬프트<br/>자동 로깅]
     C --> E[hello-plugin]
     E --> E1[코드 분석, 설명, GitHub 워크플로우,<br/>시각화 등 개발 생산성 도구 모음]
+    C --> F[technical-writing]
+    F --> F1[기술 문서 작성 전문 에이전트와<br/>README 구조 규약 제공]
 ```
 
 ## 💾 설치 방법
@@ -83,6 +85,7 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 |------|------|
 | [claude-logger](./plugins/claude-logger) | Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인 |
 | [hello-plugin](./plugins/hello-plugin) | 코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용) |
+| [technical-writing](./plugins/technical-writing) | 기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인 |
 
 ## ⚖️ 라이선스
 

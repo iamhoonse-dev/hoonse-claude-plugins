@@ -13,7 +13,7 @@ user-invocable: false
 1. **제목 및 한 줄 소개**: 플러그인 이름과 간결한 설명
 1. **개요**: 프로젝트 구조를 시각적으로 표현한 다이어그램
 1. **설치 방법**: 플러그인 설치 명령어
-1. **사용 예시**: 주요 기능의 실제 사용 예시 
+1. **사용 예시**: 주요 기능의 실제 사용 예시
 1. **기능 목록**: 플러그인이 제공하는 구성 요소를 종류별로 정리
    - Skills, Hooks, Agents, MCP, LSP 등 해당하는 항목만 포함
 1. **라이선스**: 라이선스 표기
@@ -30,21 +30,21 @@ user-invocable: false
 - 다이어그램은 Mermaid 또는 PlantUML을 사용하여 작성
   - 가급적 Mermaid 사용 권장하나, PlantUML이 더 적합한 경우 허용
   - 1 depth 로 .claude, plugins 까지 포함하고, 각 플러그인별로 1 depth 추가하여 표현
-   - 예시: 
+   - 예시:
       ```mermaid
       graph LR
        A[hello-plugin] --> B[Hooks]
        A --> C[Agents]
        A --> D[Skills]
-   
+
        C --> D1[code-improver<br/>코드 품질 개선]
-     
+
        D --> B1[dive-deep<br/>주제 심층 연구]
        D --> B2[explain-code<br/>코드 시각적 설명]
        D --> B3[fix-issue<br/>GitHub 이슈 수정]
        D --> B4[summarize-pr<br/>PR 요약]
        D --> B5[visualize-codebase<br/>코드베이스 시각화]
-   
+
        B --> C1[PreToolUse<br/>도구 사용 로깅]
        B --> C2[UserPromptSubmit<br/>프롬프트 로깅]
       ```

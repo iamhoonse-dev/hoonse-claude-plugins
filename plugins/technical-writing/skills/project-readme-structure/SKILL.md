@@ -13,7 +13,7 @@ user-invocable: false
 1. **제목 및 한 줄 소개**: 프로젝트 이름과 간결한 설명
 1. **개요**: 프로젝트 구조를 시각적으로 표현한 다이어그램
 1. **설치 방법**: 마켓플레이스 등록 및 플러그인 설치 명령어
-1. **사용 예시**: 주요 기능의 실제 사용 예시 
+1. **사용 예시**: 주요 기능의 실제 사용 예시
 1. **플러그인 목록**: 프로젝트에서 제공하는 주요 플러그인들을 정리
 1. **라이선스**: 라이선스 표기
 
@@ -29,7 +29,7 @@ user-invocable: false
 - 다이어그램은 Mermaid 또는 PlantUML을 사용하여 작성
   - 가급적 Mermaid 사용 권장하나, PlantUML이 더 적합한 경우 허용
   - 1 depth 로 .claude, plugins 까지 포함하고, 각 플러그인별로 1 depth 추가하여 표현
-   - 예시: 
+   - 예시:
       ```mermaid
       graph LR
         A[hoonse-claude-plugins] --> B[.claude]

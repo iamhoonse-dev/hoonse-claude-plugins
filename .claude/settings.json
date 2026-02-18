@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
-    "claude-logger@hoonse-claude-plugins": true
+    "claude-logger@hoonse-claude-plugins": true,
+    "technical-writing@hoonse-claude-plugins": true
   }
 }
