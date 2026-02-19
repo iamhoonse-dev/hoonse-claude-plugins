@@ -31,6 +31,7 @@ Closes #
 - [ ] `hello-plugin`
 - [ ] `technical-writing`
 - [ ] `git-workflow`
+- [ ] `github-workflow`
 - [ ] Marketplace (core)
 - [ ] None (project-wide)
 

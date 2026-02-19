@@ -42,6 +42,7 @@ cd hoonse-claude-plugins
 /plugin install hello-plugin@hoonse-claude-plugins
 /plugin install technical-writing@hoonse-claude-plugins
 /plugin install git-workflow@hoonse-claude-plugins
+/plugin install github-workflow@hoonse-claude-plugins
 ```
 
 설치 후 플러그인이 활성화되어 있는지 확인하려면 프로젝트 루트의 `.claude/settings.json`을 확인합니다.
@@ -51,7 +52,8 @@ cd hoonse-claude-plugins
   "enabledPlugins": {
     "claude-logger@hoonse-claude-plugins": true,
     "technical-writing@hoonse-claude-plugins": true,
-    "git-workflow@hoonse-claude-plugins": true
+    "git-workflow@hoonse-claude-plugins": true,
+    "github-workflow@hoonse-claude-plugins": true
   }
 }
 ```
@@ -80,7 +82,11 @@ hoonse-claude-plugins/
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/
 │   │   └── skills/
-│   └── git-workflow/                 # Git 워크플로우
+│   ├── git-workflow/                 # Git 워크플로우
+│   │   ├── .claude-plugin/plugin.json
+│   │   ├── agents/
+│   │   └── skills/
+│   └── github-workflow/              # GitHub 워크플로우
 │       ├── .claude-plugin/plugin.json
 │       ├── agents/
 │       └── skills/

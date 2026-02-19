@@ -12,6 +12,7 @@ body:
         - hello-plugin
         - technical-writing
         - git-workflow
+        - github-workflow
         - Marketplace (core)
         - Other
     validations:

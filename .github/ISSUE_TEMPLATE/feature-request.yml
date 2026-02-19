@@ -12,6 +12,7 @@ body:
         - hello-plugin
         - technical-writing
         - git-workflow
+        - github-workflow
         - Marketplace (core)
         - New plugin (use the "New Plugin Proposal" template instead)
     validations:

@@ -17,6 +17,8 @@ graph LR
     F --> F1[기술 문서 작성 전문 에이전트와<br/>README 구조 규약 제공]
     C --> G[git-workflow]
     G --> G1[로컬 Git 워크플로우 규약<br/>관리]
+    C --> H[github-workflow]
+    H --> H1[GitHub Issue 기반<br/>개발 워크플로우 자동화]
 ```
 
 ## 💾 설치 방법
@@ -89,6 +91,7 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 | [hello-plugin](./plugins/hello-plugin) | 코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용) |
 | [technical-writing](./plugins/technical-writing) | 기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인 |
 | [git-workflow](./plugins/git-workflow) | 로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인 |
+| [github-workflow](./plugins/github-workflow) | GitHub Issue 기반 개발 워크플로우(이슈 분석, PR 생성 등)를 자동화하는 플러그인 |
 
 ## ⚖️ 라이선스
 
