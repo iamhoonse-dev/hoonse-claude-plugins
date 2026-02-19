@@ -1,6 +1,6 @@
 # github-workflow
 
-GitHub Issue 기반 개발 워크플로우(이슈 분석, PR 생성 등)를 자동화하는 플러그인
+GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 생성 등)를 자동화하는 플러그인
 
 ## 💁 개요
 
@@ -12,8 +12,9 @@ graph LR
     C --> C1[issue-fetcher<br/>GitHub Issue 분석]
     C --> C2[pr-creator<br/>규약 기반 PR 생성]
 
-    D --> D1[work-on-issue<br/>전체 워크플로우 오케스트레이션]
-    D --> D2[pr-convention<br/>PR 작성 규약]
+    D --> D1[work-on-issue<br/>이슈 기반 워크플로우 오케스트레이션]
+    D --> D2[work-from-scratch<br/>자유 작업 워크플로우 오케스트레이션]
+    D --> D3[pr-convention<br/>PR 작성 규약]
 ```
 
 > **의존성**: 이 플러그인은 `git-workflow` 플러그인의 `branch-creator`, `auto-committer` 에이전트를 활용합니다. `git-workflow` 플러그인이 함께 설치되어 있어야 전체 워크플로우가 정상 동작합니다.
@@ -66,6 +67,20 @@ Skills는 `/github-workflow:<skill-name>` 형태로 호출합니다.
 /work-on-issue 42
 ```
 
+#### work-from-scratch
+
+##### with plugin namespace
+
+```
+/github-workflow:work-from-scratch 로그인 페이지에 다크 모드 토글 추가
+```
+
+##### without plugin namespace
+
+```
+/work-from-scratch 로그인 페이지에 다크 모드 토글 추가
+```
+
 ### 🤖 Agents
 
 Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 요청할 수 있습니다.
@@ -91,6 +106,7 @@ PR 만들어줘
 | 이름 | 타입 | 설명 |
 |------|------|------|
 | work-on-issue | 직접 호출형 | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
+| work-from-scratch | 직접 호출형 | Issue 없이 작업 설명을 받아 작업 정의 → 브랜치 생성 → 계획 수립 → 구현 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
 | pr-convention | 지침형 | PR 제목/본문 작성 규약을 정의합니다. Conventional Commits 기반의 제목 형식, 한국어 명사형, 72자 제한 등의 규칙을 포함합니다. |
 
 ### 🤖 Agents
