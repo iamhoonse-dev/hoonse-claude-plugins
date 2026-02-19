@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contributing Guide
+    url: https://github.com/iamhoonse-dev/hoonse-claude-plugins/blob/main/CONTRIBUTING.md
+    about: Read the contributing guide before opening an issue.
+  - name: Claude Code Plugin Documentation
+    url: https://docs.anthropic.com/en/docs/claude-code/plugins
+    about: Official Claude Code plugin development and installation guide.

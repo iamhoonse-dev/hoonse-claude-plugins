@@ -1,0 +1,87 @@
+name: New Plugin Proposal
+description: Propose a new plugin for the marketplace.
+labels: ["new-plugin"]
+body:
+  - type: input
+    id: plugin-name
+    attributes:
+      label: Plugin Name
+      description: The name of the proposed plugin (use kebab-case).
+      placeholder: my-awesome-plugin
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plugin-category
+    attributes:
+      label: Plugin Category
+      description: What category best describes this plugin?
+      options:
+        - logging
+        - development
+        - documentation
+        - testing
+        - code-quality
+        - productivity
+        - git-workflow
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: plugin-description
+    attributes:
+      label: Plugin Description
+      description: A clear and concise description of what the plugin does and why it is useful.
+      placeholder: Describe the plugin's purpose and value...
+    validations:
+      required: true
+
+  - type: textarea
+    id: planned-components
+    attributes:
+      label: Planned Components
+      description: Describe the Skills, Agents, and/or Hooks this plugin will include.
+      placeholder: |
+        **Skills:**
+        - `skill-name` — Description of what this skill does
+
+        **Agents:**
+        - `agent-name` — Description of what this agent does
+
+        **Hooks:**
+        - `hook-event` — Description of what this hook does
+    validations:
+      required: true
+
+  - type: textarea
+    id: usage-examples
+    attributes:
+      label: Usage Examples
+      description: Provide examples of how users would interact with this plugin.
+      placeholder: |
+        ```
+        /skill-name
+        ```
+        This would...
+    validations:
+      required: false
+
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Overlap with Existing Plugins
+      description: Does this plugin overlap with any existing plugins? If so, explain how it differs.
+      placeholder: This plugin differs from existing-plugin because...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing plugins and issues to confirm this is not a duplicate.
+          required: true
+        - label: I have read the [CONTRIBUTING.md](https://github.com/iamhoonse-dev/hoonse-claude-plugins/blob/main/CONTRIBUTING.md).
+          required: true

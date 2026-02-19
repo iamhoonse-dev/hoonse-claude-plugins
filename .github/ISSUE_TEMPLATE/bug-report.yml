@@ -1,0 +1,100 @@
+name: Bug Report
+description: Report a bug in a plugin or the marketplace.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: affected-plugin
+    attributes:
+      label: Affected Plugin
+      description: Which plugin is affected by this bug?
+      options:
+        - claude-logger
+        - hello-plugin
+        - technical-writing
+        - git-workflow
+        - Marketplace (core)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component-type
+    attributes:
+      label: Component Type
+      description: Which component type is related to this bug?
+      options:
+        - Skill
+        - Agent
+        - Hook
+        - Installation / Setup
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Install plugin '...'
+        2. Run command '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen.
+      placeholder: Describe what you expected...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happened.
+      placeholder: Describe what actually happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Provide your environment details.
+      value: |
+        - OS:
+        - Claude Code CLI version:
+        - Plugin version:
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Screenshots
+      description: If applicable, add logs or screenshots to help explain your problem.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to make sure this is not a duplicate.
+          required: true
