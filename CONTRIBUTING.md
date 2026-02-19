@@ -291,6 +291,77 @@ fix(agent): tech-doc-writer에서 하드코딩된 절대 경로 제거
 feat!: 단일 플러그인 구조에서 모노레포 구조로 변경
 ```
 
+## 📋 Issue 작성 가이드
+
+GitHub Issue를 제출하기 전에 먼저 [기존 Issue 목록](https://github.com/iamhoonse-dev/hoonse-claude-plugins/issues)을 검색하여 동일한 내용이 없는지 확인해 주세요.
+
+### 템플릿 선택 안내
+
+Issue를 생성할 때 상황에 맞는 템플릿을 선택합니다.
+
+| 템플릿 | 레이블 | 선택 기준 |
+|--------|--------|-----------|
+| Bug Report | `bug` | 플러그인 또는 마켓플레이스에서 오동작, 오류, 예상치 못한 동작을 발견한 경우 |
+| Feature Request | `enhancement` | 기존 플러그인에 새 기능(Skill, Agent, Hook)을 추가하거나 기존 기능을 개선하고 싶은 경우 |
+| New Plugin Proposal | `new-plugin` | 마켓플레이스에 완전히 새로운 플러그인을 제안하는 경우 |
+| Documentation Improvement | `documentation` | README, CONTRIBUTING.md, SKILL.md 등 문서의 오류, 누락, 개선이 필요한 경우 |
+
+### 작성 팁
+
+좋은 Issue는 담당자가 빠르게 이해하고 재현할 수 있도록 돕습니다.
+
+- **Bug Report**: 재현 단계를 구체적으로 작성하고, OS · Claude Code CLI 버전 · 플러그인 버전 등 환경 정보를 빠짐없이 입력하세요.
+- **Feature Request**: "무엇을 원한다"보다 "어떤 문제를 해결하고 싶다"는 관점으로 문제 상황을 먼저 기술하세요.
+- **New Plugin Proposal**: 기존 플러그인과의 중복 여부를 사전에 확인하고, 포함할 구성 요소(Skills/Agents/Hooks)와 사용 예시를 함께 제시하세요.
+- **Documentation Improvement**: 현재 문서의 어떤 부분이 문제인지, 어떻게 변경되어야 하는지를 구체적으로 기술하세요.
+
+## 🔀 Pull Request 제출 절차
+
+### 브랜치 전략
+
+모든 변경 작업은 `main` 브랜치에서 새 브랜치를 분기하여 진행합니다.
+
+브랜치 이름은 커밋 type과 작업 내용을 조합하여 다음 형식으로 작성합니다.
+
+```
+<type>/<short-description>
+```
+
+예시:
+
+```
+feat/hello-plugin-add-visualize-skill
+fix/git-workflow-commit-message-typo
+docs/contributing-add-pr-guide
+```
+
+작업이 완료되면 `main` 브랜치를 base로 Pull Request를 생성합니다.
+
+### PR 작성
+
+PR을 생성하면 `.github/PULL_REQUEST_TEMPLATE.md`가 자동으로 적용됩니다. 템플릿의 각 섹션을 빠짐없이 작성해 주세요.
+
+| 섹션 | 설명 |
+|------|------|
+| Summary | 변경의 "이유"를 중심으로 설명합니다. 무엇이 바뀌었는지보다 왜 바꿨는지를 기술합니다. |
+| Related Issue | 관련 Issue가 있다면 `Closes #<번호>` 형식으로 연결합니다. 머지 시 해당 Issue가 자동으로 닫힙니다. |
+| Change Type | 커밋 type과 일치하는 항목을 체크합니다. |
+| Affected Plugin(s) | 변경이 영향을 미치는 플러그인을 모두 체크합니다. |
+| Changes Made | 변경 사항을 구체적으로 나열합니다. |
+| Testing | 수행한 검증 항목(플러그인 설치, Skills/Agents/Hooks 동작 확인 등)을 체크합니다. |
+| Checklist | 커밋 규약 준수, `plugin.json` 및 `marketplace.json` 업데이트 여부 등을 확인합니다. |
+| Reviewer Notes | 리뷰어가 특별히 집중해야 할 부분이나 알려진 제약 사항을 기술합니다. (선택 사항) |
+
+### 리뷰 프로세스
+
+1. PR을 생성하면 저장소 담당자가 검토를 시작합니다.
+
+1. 리뷰 코멘트에 대해서는 해결 후 해당 코멘트에 답글을 남기거나 `Resolve conversation` 버튼으로 완료 표시를 합니다.
+
+1. 요청된 수정 사항을 같은 브랜치에 추가 커밋으로 반영합니다. 기존 커밋을 force push로 덮어쓰는 것은 지양합니다.
+
+1. 모든 리뷰 코멘트가 해결되고 승인(Approve)을 받으면 `main` 브랜치로 머지됩니다.
+
 ## ❓ 트러블슈팅
 
 <details>
