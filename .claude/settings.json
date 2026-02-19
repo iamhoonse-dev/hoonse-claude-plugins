@@ -2,6 +2,7 @@
   "enabledPlugins": {
     "claude-logger@hoonse-claude-plugins": true,
     "technical-writing@hoonse-claude-plugins": true,
-    "git-workflow@hoonse-claude-plugins": true
+    "git-workflow@hoonse-claude-plugins": true,
+    "github-workflow@hoonse-claude-plugins": true
   }
 }
