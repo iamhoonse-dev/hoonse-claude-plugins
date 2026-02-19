@@ -149,6 +149,12 @@ hoonse-claude-plugins/
 
 1. 필요한 구성 요소(Skills, Agents, Hooks) 디렉토리를 생성하고 내용을 작성합니다.
 
+1. 마켓플레이스 캐시를 갱신합니다. `marketplace.json`에 새 플러그인을 추가한 후에는 반드시 캐시를 업데이트해야 `/plugin install`에서 인식됩니다.
+
+   ```bash
+   /plugin marketplace update hoonse-claude-plugins
+   ```
+
 1. 플러그인을 로컬에 설치하여 동작을 검증합니다.
 
    ```bash
@@ -386,6 +392,22 @@ Claude Code 세션에서 아래 명령어로 로컬 경로를 마켓플레이스
 등록 후 다시 플러그인 설치를 시도합니다.
 
 ```bash
+/plugin install my-plugin@hoonse-claude-plugins
+```
+
+</details>
+
+<details>
+<summary>새 플러그인 미인식 — <code>marketplace.json</code>에 추가했으나 <code>/plugin install</code>에서 찾을 수 없는 경우</summary>
+
+**원인:** 마켓플레이스 캐시가 `marketplace.json` 변경 이전 상태를 참조하고 있기 때문입니다.
+
+**해결 방법:**
+
+마켓플레이스 캐시를 갱신한 후 다시 설치를 시도합니다.
+
+```bash
+/plugin marketplace update hoonse-claude-plugins
 /plugin install my-plugin@hoonse-claude-plugins
 ```
 
