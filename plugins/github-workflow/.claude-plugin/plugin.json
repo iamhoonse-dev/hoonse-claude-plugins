@@ -1,0 +1,11 @@
+{
+  "name": "github-workflow",
+  "description": "GitHub Issue 기반 개발 워크플로우(이슈 분석, PR 생성 등)를 자동화하는 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}
