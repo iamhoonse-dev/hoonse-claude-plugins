@@ -15,6 +15,7 @@ body:
         - "technical-writing README"
         - "git-workflow README"
         - "github-workflow README"
+        - "project-analyzer README"
         - "SKILL.md (specific skill documentation)"
         - "Agent documentation"
         - Other

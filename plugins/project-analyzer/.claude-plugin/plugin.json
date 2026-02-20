@@ -1,0 +1,11 @@
+{
+  "name": "project-analyzer",
+  "description": "플러그인 마켓플레이스 프로젝트의 구조 일관성, 문서 품질, 설정 정합성을 자동 분석하고 GitHub Issue로 등록하는 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}

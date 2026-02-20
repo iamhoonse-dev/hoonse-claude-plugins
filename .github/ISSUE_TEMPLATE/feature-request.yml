@@ -13,6 +13,7 @@ body:
         - technical-writing
         - git-workflow
         - github-workflow
+        - project-analyzer
         - Marketplace (core)
         - New plugin (use the "New Plugin Proposal" template instead)
     validations:

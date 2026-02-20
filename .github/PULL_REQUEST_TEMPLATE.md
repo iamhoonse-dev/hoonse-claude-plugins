@@ -32,6 +32,7 @@ Closes #
 - [ ] `technical-writing`
 - [ ] `git-workflow`
 - [ ] `github-workflow`
+- [ ] `project-analyzer`
 - [ ] Marketplace (core)
 - [ ] None (project-wide)
 
