@@ -52,8 +52,19 @@ Based on the analysis, determine:
 1. **scope**: The affected plugin or area — infer from changed file paths.
 1. **description**: A concise summary in Korean, noun form, 72 characters max.
 1. **Affected plugins**: List of plugins modified in this branch.
+1. **labels**: Determine candidate labels based on pr-convention rules:
+   - **type label**: `feat`→`enhancement`, `fix`→`bug`, `docs`→`documentation` (others have no mapping)
+   - **scope label**: If scope is a plugin name, use `plugin:<scope>` (e.g., `plugin:github-workflow`)
 
-### Step 6: Craft PR Title and Body
+### Step 6: Validate Labels
+
+For each candidate label determined in Step 5:
+
+1. Run `gh label list --search "<label>" --json name` to check if the label exists in the repository.
+1. Only add labels that exist to the confirmed labels list.
+1. If a label does not exist, skip it silently (do not create labels or fail).
+
+### Step 7: Craft PR Title and Body
 
 Following the pr-convention skill:
 
@@ -67,14 +78,18 @@ Following the pr-convention skill:
    - Testing: Include relevant testing checklist items
    - Checklist: Check applicable items
    - Reviewer Notes: Add if there are notable points
+1. **Labels**: Prepare `--label` flags for each confirmed label from Step 6.
 
-### Step 7: Create the PR
+### Step 8: Create the PR
 
 Execute `gh pr create` with the HEREDOC format specified in the pr-convention skill. Target `main` as the base branch.
 
+- If confirmed labels exist, include `--label` flags in the command.
+- If no confirmed labels, create the PR without `--label` flags.
+
 After the PR is created, capture and report the PR URL.
 
-### Step 8: Report the Result
+### Step 9: Report the Result
 
 Provide a summary:
 
@@ -83,6 +98,7 @@ Provide a summary:
 - The base branch (`main`)
 - Number of commits included
 - Files changed summary
+- Applied labels (if any)
 
 ## Important Rules
 
@@ -101,6 +117,7 @@ Provide a summary:
 - If no commits ahead of main: inform the user there's nothing to create a PR for.
 - If a PR already exists for this branch: inform the user and provide the existing PR URL.
 - If `gh pr create` fails: report the exact error message.
+- If `gh pr create` fails due to labels: retry without `--label` flags and report the label issue.
 
 ## Output Format
 
