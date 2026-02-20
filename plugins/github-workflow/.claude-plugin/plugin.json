@@ -1,7 +1,7 @@
 {
   "name": "github-workflow",
-  "description": "GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 생성 등)를 자동화하는 플러그인",
-  "version": "0.0.2",
+  "description": "GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "iamhoonse",
