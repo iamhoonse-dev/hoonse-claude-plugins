@@ -13,6 +13,7 @@ graph LR
 
     D --> D1[project-readme-structure<br/>프로젝트 루트 README 규약]
     D --> D2[plugin-readme-structure<br/>플러그인 README 규약]
+    D --> D3[project-contributing-structure<br/>프로젝트 CONTRIBUTING 규약]
 ```
 
 ## 💾 설치 방법
@@ -43,21 +44,7 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/technical-writing:<skill-name>` 형태로 호출합니다.
-
-#### plugin-readme-structure
-
-##### with plugin namespace
-
-```
-/technical-writing:plugin-readme-structure
-```
-
-##### without plugin namespace
-
-```
-/plugin-readme-structure
-```
+이 플러그인의 모든 스킬은 `user-invocable: false`로 설정된 지침형 스킬입니다. 직접 호출하지 않아도 에이전트가 관련 문서를 작성할 때 자동으로 참조합니다.
 
 ### 🤖 Agents
 
@@ -85,6 +72,7 @@ README 파일을 작성해 줘
 |------|------|------|
 | project-readme-structure | 지침형 | 마켓플레이스 프로젝트 루트 README.md의 필수 섹션, 다이어그램 작성 방식, 언어 규칙 등 작성 규약을 정의합니다. |
 | plugin-readme-structure | 지침형 | 개별 플러그인 README.md의 필수 섹션, 설치 명령어 형식, 기능 목록 작성 형식 등 작성 규약을 정의합니다. |
+| project-contributing-structure | 지침형 | 프로젝트 CONTRIBUTING.md의 필수 섹션, 개발 환경 구성, 기여 절차 등 작성 규약을 정의합니다. |
 
 ### 🤖 Agents
 
