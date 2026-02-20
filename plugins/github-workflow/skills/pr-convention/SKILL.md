@@ -34,6 +34,37 @@ Conventional Commits와 동일한 형식을 사용합니다:
 - 프로젝트 전역 변경: scope 생략 또는 대상 명시 (예: `docs(readme):`)
 - 마켓플레이스 설정 변경: `marketplace`를 scope로 사용
 
+### PR 라벨 규칙
+
+PR 생성 시 type과 scope에 기반하여 라벨을 자동으로 부착합니다.
+
+#### type → 라벨 매핑
+
+| type | 라벨 | 비고 |
+|------|------|------|
+| `feat` | `enhancement` | 새 기능 |
+| `fix` | `bug` | 버그 수정 |
+| `docs` | `documentation` | 문서 변경 |
+| 그 외 | — | 대응 라벨 없음 |
+
+#### scope → 플러그인 라벨 매핑
+
+| scope | 라벨 | 비고 |
+|-------|------|------|
+| 플러그인 이름 | `plugin:<scope>` | 예: `plugin:github-workflow` |
+| 그 외 | — | 대응 라벨 없음 |
+
+#### 라벨 존재 확인
+
+라벨을 부착하기 전에 반드시 프로젝트에 해당 라벨이 존재하는지 확인합니다:
+
+```bash
+gh label list --search "<label>" --json name
+```
+
+- 존재하는 라벨만 `--label` 플래그로 추가합니다.
+- 존재하지 않는 라벨은 무시합니다 (라벨 없이 PR 생성).
+
 ### PR 본문 구조
 
 PR 본문은 다음 섹션을 순서대로 포함합니다:
@@ -130,6 +161,17 @@ EOF
 )"
 ```
 
+#### 라벨 포함 (라벨이 존재하는 경우)
+
+```bash
+gh pr create --title "<type>[(scope)]: <description>" \
+  --label "<type-label>" --label "<scope-label>" \
+  --body "$(cat <<'EOF'
+...
+EOF
+)"
+```
+
 ### 예시
 
 ```
@@ -139,3 +181,13 @@ feat(github-workflow): GitHub Issue 기반 개발 워크플로우 플러그인 �
 ```
 fix(git-workflow): auto-committer에서 스테이징되지 않은 파일 처리 오류 수정
 ```
+
+### 라벨 결정 예시
+
+| PR 제목 | type 라벨 | scope 라벨 |
+|---------|-----------|------------|
+| `feat(github-workflow): PR 라벨 자동 부착 기능 추가` | `enhancement` | `plugin:github-workflow` |
+| `fix(git-workflow): auto-committer 오류 수정` | `bug` | `plugin:git-workflow` |
+| `docs(readme): 프로젝트 README 업데이트` | `documentation` | — |
+| `refactor(github-workflow): 코드 구조 개선` | — | `plugin:github-workflow` |
+| `chore: 의존성 업데이트` | — | — |
