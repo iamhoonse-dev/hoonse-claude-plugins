@@ -42,6 +42,26 @@ graph LR
 
 ## 🧑‍💻 사용 예시
 
+### 📖 Skills
+
+Skills는 `/git-workflow:<skill-name>` 형태로 호출합니다.
+
+#### commit-message
+
+`commit-message` 스킬은 `user-invocable: false`로 설정된 지침형 스킬입니다. Claude가 커밋 메시지를 작성할 때 자동으로 참조하며, 직접 호출하지 않아도 됩니다.
+
+##### with plugin namespace
+
+```
+/git-workflow:commit-message
+```
+
+##### without plugin namespace
+
+```
+/commit-message
+```
+
 ### 🤖 Agents
 
 Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 요청할 수 있습니다.
@@ -72,26 +92,6 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 
 ```
 브랜치 만들어줘
-```
-
-### 📖 Skills
-
-Skills는 `/git-workflow:<skill-name>` 형태로 호출합니다.
-
-#### commit-message
-
-`commit-message` 스킬은 `user-invocable: false`로 설정된 지침형 스킬입니다. Claude가 커밋 메시지를 작성할 때 자동으로 참조하며, 직접 호출하지 않아도 됩니다.
-
-##### with plugin namespace
-
-```
-/git-workflow:commit-message
-```
-
-##### without plugin namespace
-
-```
-/commit-message
 ```
 
 ## 🛠️ 기능
