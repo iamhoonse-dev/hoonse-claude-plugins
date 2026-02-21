@@ -78,6 +78,18 @@
       "source": "./plugins/project-analyzer",
       "category": "code-quality",
       "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+    },
+    {
+      "name": "backend",
+      "description": "RESTful API 설계 규약과 FastAPI 백엔드 개발 전문 에이전트를 제공하는 플러그인",
+      "version": "0.0.1",
+      "author": {
+        "name": "iamhoonse",
+        "email": "iamhoonse+dev@gmail.com"
+      },
+      "source": "./plugins/backend",
+      "category": "development",
+      "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
     }
   ]
 }
