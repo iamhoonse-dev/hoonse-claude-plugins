@@ -90,6 +90,18 @@
       "source": "./plugins/backend",
       "category": "development",
       "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+    },
+    {
+      "name": "data-engineering",
+      "description": "Apache Airflow DAG 개발 전문 에이전트를 제공하는 데이터 엔지니어링 플러그인",
+      "version": "0.0.1",
+      "author": {
+        "name": "iamhoonse",
+        "email": "iamhoonse+dev@gmail.com"
+      },
+      "source": "./plugins/data-engineering",
+      "category": "development",
+      "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
     }
   ]
 }
