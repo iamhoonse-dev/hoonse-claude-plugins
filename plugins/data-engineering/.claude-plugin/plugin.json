@@ -1,0 +1,11 @@
+{
+  "name": "data-engineering",
+  "description": "Apache Airflow DAG 개발 전문 에이전트를 제공하는 데이터 엔지니어링 플러그인",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "iamhoonse",
+    "email": "iamhoonse+dev@gmail.com"
+  },
+  "repository": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
+}
