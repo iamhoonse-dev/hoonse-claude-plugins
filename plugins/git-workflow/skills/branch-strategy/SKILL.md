@@ -49,7 +49,7 @@ Conventional Commits의 type을 그대로 사용합니다:
 ### 예시
 
 ```
-feat/hello-plugin-add-visualize-skill
+feat/git-workflow-add-auto-committer
 fix/git-workflow-commit-message-typo
 docs/contributing-add-pr-guide
 refactor/claude-logger-hook-cleanup

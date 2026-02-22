@@ -9,7 +9,6 @@ body:
       description: Which plugin should this feature be added to?
       options:
         - claude-logger
-        - hello-plugin
         - technical-writing
         - git-workflow
         - github-workflow

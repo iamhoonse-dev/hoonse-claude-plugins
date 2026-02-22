@@ -26,7 +26,7 @@ user-invocable: false
 #### 제목 예시
 
 ```
-[error] structure(hello-plugin): 필수 파일 plugin.json 누락
+[error] structure(git-workflow): 필수 파일 plugin.json 누락
 [warning] docs(git-workflow): README 필수 섹션 '설치 방법' 누락
 [info] settings(project): marketplace.json에 미등록 플러그인 발견
 ```
@@ -119,10 +119,10 @@ user-invocable: false
 #### 개별 이슈
 
 ```bash
-gh issue create --title "[error] structure(hello-plugin): 필수 파일 plugin.json 누락" --body "$(cat <<'EOF'
+gh issue create --title "[error] structure(git-workflow): 필수 파일 plugin.json 누락" --body "$(cat <<'EOF'
 ## 분석 결과
 
-`hello-plugin` 플러그인 디렉토리에 필수 파일 `.claude-plugin/plugin.json`이 존재하지 않습니다.
+`git-workflow` 플러그인 디렉토리에 필수 파일 `.claude-plugin/plugin.json`이 존재하지 않습니다.
 
 ## 기대 상태
 
@@ -130,12 +130,12 @@ gh issue create --title "[error] structure(hello-plugin): 필수 파일 plugin.j
 
 ## 제안 수정 방법
 
-1. `plugins/hello-plugin/.claude-plugin/plugin.json` 파일을 생성합니다.
+1. `plugins/git-workflow/.claude-plugin/plugin.json` 파일을 생성합니다.
 1. name, description, version, author 등 필수 필드를 작성합니다.
 
 ## 관련 파일
 
-- `plugins/hello-plugin/.claude-plugin/plugin.json` (누락)
+- `plugins/git-workflow/.claude-plugin/plugin.json` (누락)
 
 ---
 
@@ -147,7 +147,7 @@ EOF
 #### 라벨 포함 (라벨이 존재하는 경우)
 
 ```bash
-gh issue create --title "[error] structure(hello-plugin): 필수 파일 plugin.json 누락" \
+gh issue create --title "[error] structure(git-workflow): 필수 파일 plugin.json 누락" \
   --label "analyzer:structure" --label "severity:error" \
   --body "$(cat <<'EOF'
 ...
@@ -160,7 +160,7 @@ EOF
 이슈 생성 전 기존 이슈와 중복되지 않는지 확인합니다:
 
 ```bash
-gh issue list --search "[error] structure(hello-plugin)" --state open --json number,title
+gh issue list --search "[error] structure(git-workflow)" --state open --json number,title
 ```
 
 동일한 제목 패턴의 열린 이슈가 있으면 생성을 건너뛰고, 해당 이슈 번호를 보고합니다.

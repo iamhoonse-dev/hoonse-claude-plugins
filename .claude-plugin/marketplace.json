@@ -20,18 +20,6 @@
       "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
     },
     {
-      "name": "hello-plugin",
-      "description": "코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용)",
-      "version": "0.0.1",
-      "author": {
-        "name": "iamhoonse",
-        "email": "iamhoonse+dev@gmail.com"
-      },
-      "source": "./plugins/hello-plugin",
-      "category": "development",
-      "homepage": "https://github.com/iamhoonse-dev/hoonse-claude-plugins"
-    },
-    {
       "name": "technical-writing",
       "description": "기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인",
       "version": "0.0.1",

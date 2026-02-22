@@ -34,20 +34,14 @@ user-invocable: false
    - 예시:
       ```mermaid
       graph LR
-       A[hello-plugin] --> B[Hooks]
-       A --> C[Agents]
-       A --> D[Skills]
+       A[git-workflow] --> B[Agents]
+       A --> C[Skills]
 
-       C --> D1[code-improver<br/>코드 품질 개선]
+       B --> B1[auto-committer<br/>자동 커밋]
+       B --> B2[branch-creator<br/>브랜치 생성]
 
-       D --> B1[dive-deep<br/>주제 심층 연구]
-       D --> B2[explain-code<br/>코드 시각적 설명]
-       D --> B3[fix-issue<br/>GitHub 이슈 수정]
-       D --> B4[summarize-pr<br/>PR 요약]
-       D --> B5[visualize-codebase<br/>코드베이스 시각화]
-
-       B --> C1[PreToolUse<br/>도구 사용 로깅]
-       B --> C2[UserPromptSubmit<br/>프롬프트 로깅]
+       C --> C1[commit-message<br/>커밋 메시지 규약]
+       C --> C2[branch-strategy<br/>브랜치 전략]
       ```
    - 각 구성 요소들의 배치 순서는 hooks, agents, skills 순으로 배치하되, 플러그인마다 구성 요소의 수가 다르므로 적절히 조정하여 가독성 높게 작성
 - 각 기능 설명은 1~2문장으로 간결하게

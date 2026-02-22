@@ -9,7 +9,6 @@ body:
       description: Which plugin is affected by this bug?
       options:
         - claude-logger
-        - hello-plugin
         - technical-writing
         - git-workflow
         - github-workflow
