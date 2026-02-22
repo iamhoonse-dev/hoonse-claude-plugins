@@ -39,7 +39,6 @@ cd hoonse-claude-plugins
 ```bash
 # 특정 플러그인 설치
 /plugin install claude-logger@hoonse-claude-plugins
-/plugin install hello-plugin@hoonse-claude-plugins
 /plugin install technical-writing@hoonse-claude-plugins
 /plugin install git-workflow@hoonse-claude-plugins
 /plugin install github-workflow@hoonse-claude-plugins
@@ -74,10 +73,6 @@ hoonse-claude-plugins/
 │   │   └── hooks/
 │   │       ├── hooks.json
 │   │       └── scripts/
-│   ├── hello-plugin/                 # 개발 생산성 도구
-│   │   ├── .claude-plugin/plugin.json
-│   │   ├── agents/
-│   │   └── skills/
 │   ├── technical-writing/            # 기술 문서 작성
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/
@@ -279,7 +274,7 @@ memory:
 이 프로젝트는 모노레포 구조이므로 scope를 다음과 같이 사용합니다.
 
 - 프로젝트 전역 변경: scope 생략 또는 대상 명시 (예: `docs(readme):`)
-- 특정 플러그인 변경: 플러그인 이름을 scope로 사용 (예: `feat(hello-plugin):`)
+- 특정 플러그인 변경: 플러그인 이름을 scope로 사용 (예: `feat(git-workflow):`)
 - 마켓플레이스 설정 변경: `marketplace`를 scope로 사용 (예: `fix(marketplace):`)
 - 에이전트/스킬 변경: `agent`, `skill`을 scope로 사용 (예: `fix(agent):`)
 
@@ -292,7 +287,7 @@ memory:
 ### 예시
 
 ```
-feat(hello-plugin): 코드 시각화 스킬 추가
+feat(git-workflow): 자동 커밋 에이전트 추가
 ```
 
 ```
@@ -342,7 +337,7 @@ Issue를 생성할 때 상황에 맞는 템플릿을 선택합니다.
 예시:
 
 ```
-feat/hello-plugin-add-visualize-skill
+feat/git-workflow-add-auto-committer
 fix/git-workflow-commit-message-typo
 docs/contributing-add-pr-guide
 ```

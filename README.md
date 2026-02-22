@@ -11,8 +11,6 @@ graph LR
     A --> C[plugins]
     C --> D[claude-logger]
     D --> D1[도구 사용 및 프롬프트<br/>자동 로깅]
-    C --> E[hello-plugin]
-    E --> E1[코드 분석, 설명, GitHub 워크플로우,<br/>시각화 등 개발 생산성 도구 모음]
     C --> F[technical-writing]
     F --> F1[기술 문서 작성 전문 에이전트와<br/>README 구조 규약 제공]
     C --> G[git-workflow]
@@ -32,7 +30,7 @@ graph LR
 /plugin marketplace add iamhoonse-dev/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@hoonse-claude-plugins
+/plugin install git-workflow@hoonse-claude-plugins
 ```
 
 ### 로컬 경로에서 추가
@@ -42,45 +40,45 @@ graph LR
 /plugin marketplace add /path/to/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install hello-plugin@hoonse-claude-plugins
+/plugin install git-workflow@hoonse-claude-plugins
 ```
 
 ## 🧑‍💻 사용 예시
 
 ### 📖 Skills
 
-Skills는 `/hello-plugin:<skill-name>` 형태로 호출합니다.
+Skills는 `/<plugin-name>:<skill-name>` 형태로 호출합니다.
 
-#### dive-deep
+#### commit-message (git-workflow)
 
 ##### with plugin namespace
 
 ```
-/hello-plugin:dive-deep 인증 모듈의 동작 원리
+/git-workflow:commit-message
 ```
 
 ##### without plugin namespace
 
 ```
-/dive-deep 인증 모듈의 동작 원리
+/commit-message
 ```
 
 ### 🤖 Agents
 
 Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 요청할 수 있습니다.
 
-#### code-improver
+#### auto-committer (git-workflow)
 
 ##### with plugin namespace
 
 ```
-@hello-plugin:code-improver 이 파일의 코드를 개선해 줘: src/utils/parser.ts
+@git-workflow:auto-committer 변경사항을 커밋해 줘
 ```
 
 ##### without plugin namespace
 
 ```
-이 파일의 코드를 개선해 줘: src/utils/parser.ts
+변경사항을 커밋해 줘
 ```
 
 ## 🛠️ 플러그인 목록
@@ -88,7 +86,6 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 | 이름 | 설명 |
 |------|------|
 | [claude-logger](./plugins/claude-logger) | Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인 |
-| [hello-plugin](./plugins/hello-plugin) | 코드 분석, 설명, GitHub 워크플로우, 시각화 등 개발 생산성 도구 모음 (연습/실험용) |
 | [technical-writing](./plugins/technical-writing) | 기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인 |
 | [git-workflow](./plugins/git-workflow) | 로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인 |
 | [github-workflow](./plugins/github-workflow) | GitHub Issue 기반 개발 워크플로우(이슈 분석, PR 생성 등)를 자동화하는 플러그인 |

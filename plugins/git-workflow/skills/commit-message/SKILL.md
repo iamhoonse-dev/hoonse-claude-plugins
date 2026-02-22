@@ -49,7 +49,7 @@ user-invocable: false
 이 프로젝트는 모노레포 구조이므로 scope를 다음과 같이 사용합니다:
 
 - 프로젝트 전역 변경: scope 생략 또는 대상 명시 (예: `docs(readme):`)
-- 특정 플러그인 변경: 플러그인 이름을 scope로 사용 (예: `feat(hello-plugin):`)
+- 특정 플러그인 변경: 플러그인 이름을 scope로 사용 (예: `feat(git-workflow):`)
 - 마켓플레이스 설정 변경: `marketplace`를 scope로 사용 (예: `fix(marketplace):`)
 - 에이전트/스킬 변경: `agent`, `skill`을 scope로 사용 (예: `fix(agent):`)
 
@@ -81,7 +81,7 @@ user-invocable: false
 ### 예시
 
 ```
-feat(hello-plugin): 코드 시각화 스킬 추가
+feat(git-workflow): 자동 커밋 에이전트 추가
 ```
 
 ```

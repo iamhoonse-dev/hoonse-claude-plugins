@@ -13,8 +13,8 @@ Examples:
 </example>
 - <example>
   Context: The user wants to check a specific plugin's structure.
-  user: \"hello-plugin 구조가 올바른지 확인해줘\"
-  assistant: \"structure-analyzer 에이전트를 사용하여 hello-plugin의 디렉토리 구조를 검사하겠습니다.\"
+  user: \"git-workflow 구조가 올바른지 확인해줘\"
+  assistant: \"structure-analyzer 에이전트를 사용하여 git-workflow의 디렉토리 구조를 검사하겠습니다.\"
   <commentary>
   The user wants to validate a specific plugin's structure. Use the Task tool to launch the structure-analyzer agent with the plugin name.
   </commentary>
