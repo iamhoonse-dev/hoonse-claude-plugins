@@ -13,6 +13,8 @@ body:
         - git-workflow
         - github-workflow
         - project-analyzer
+        - backend
+        - data-engineering
         - Marketplace (core)
         - Other
     validations:

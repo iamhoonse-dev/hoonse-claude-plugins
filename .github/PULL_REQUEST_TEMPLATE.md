@@ -32,6 +32,8 @@ Closes #
 - [ ] `git-workflow`
 - [ ] `github-workflow`
 - [ ] `project-analyzer`
+- [ ] `backend`
+- [ ] `data-engineering`
 - [ ] Marketplace (core)
 - [ ] None (project-wide)
 
