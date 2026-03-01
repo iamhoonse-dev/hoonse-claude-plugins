@@ -25,6 +25,63 @@ graph LR
     K --> K1[프로젝트 구조·문서 품질·<br/>설정 정합성 자동 분석 및<br/>GitHub Issue 등록]
 ```
 
+## ✨ 핵심 워크플로우
+
+이 마켓플레이스의 가장 큰 특장점은 **개발 워크플로우 전체를 자동화하는 오케스트레이션 스킬**입니다.
+Issue 분석부터 브랜치 생성, 구현, 커밋, PR 생성까지 하나의 스킬 호출로 처리할 수 있습니다.
+
+| 스킬 | 플러그인 | 설명 |
+|------|---------|------|
+| [work-on-issue](./plugins/github-workflow) | github-workflow | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 및 커밋 → PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
+| [work-from-scratch](./plugins/github-workflow) | github-workflow | Issue 없이 작업 설명을 받아 브랜치 생성부터 PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
+| [work-on-pr](./plugins/github-workflow) | github-workflow | GitHub PR 번호를 받아 리뷰 분석 → 피드백 반영 커밋 → PR 코멘트 작성까지 리뷰 대응 워크플로우를 오케스트레이션합니다. |
+| [analyze-project](./plugins/project-analyzer) | project-analyzer | 플러그인 마켓플레이스 프로젝트를 자동 분석하여 구조·문서·설정 문제를 GitHub Issue로 등록합니다. |
+
+아래 차트는 각 오케스트레이션 스킬이 내부적으로 호출하는 하위 에이전트/스킬의 의존 관계를 보여줍니다.
+
+```mermaid
+graph LR
+    subgraph github-workflow
+        WOI["/work-on-issue"]
+        WFS["/work-from-scratch"]
+        WOP["/work-on-pr"]
+        IF["@issue-fetcher"]
+        PRF["@pr-fetcher"]
+        PRC["@pr-creator"]
+    end
+
+    subgraph git-workflow
+        BC["@branch-creator"]
+        AC["@auto-committer"]
+        BS["/branch-strategy"]
+        CM["/commit-message"]
+    end
+
+    subgraph project-analyzer
+        AP["/analyze-project"]
+        SA["@structure-analyzer"]
+        DA["@docs-analyzer"]
+        SEA["@settings-analyzer"]
+        IC["@issue-creator"]
+    end
+
+    WOI --> IF
+    WOI --> BC
+    WOI --> AC
+    WOI --> PRC
+    WFS --> BC
+    WFS --> AC
+    WFS --> PRC
+    WOP --> PRF
+    WOP --> AC
+    AP --> SA
+    AP --> DA
+    AP --> SEA
+    AP --> IC
+    BC --> BS
+    AC --> CM
+```
+
 ## 💾 설치 방법
 
 이 마켓플레이스 프로젝트에서 제공하는 플러그인을 사용하려는 프로젝트의 루트 디렉토리에서 아래 명령어를 실행합니다.
