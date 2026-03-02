@@ -75,12 +75,18 @@ graph TB
         direction TB
         ANAP0["① 분석 범위 결정"]
         ANAP1["② 병렬 분석"]
-        ANA1["@structure-analyzer"] & ANA2["@docs-analyzer"] & ANA3["@settings-analyzer"]
+        ANA1["@structure-analyzer"]
+        ANA2["@docs-analyzer"]
+        ANA3["@settings-analyzer"]
         ANAP2["③ 종합 리포트 작성"]
         ANA4["④ @issue-creator\n(선택)"]
         ANAP0 --> ANAP1
-        ANAP1 --> ANA1 & ANA2 & ANA3
-        ANA1 & ANA2 & ANA3 --> ANAP2
+        ANAP1 --> ANA1
+        ANAP1 --> ANA2
+        ANAP1 --> ANA3
+        ANA1 --> ANAP2
+        ANA2 --> ANAP2
+        ANA3 --> ANAP2
         ANAP2 -. "개발자 승인 후" .-> ANA4
     end
 
@@ -88,12 +94,15 @@ graph TB
     class WOI3,WOP3,WFS3 plan
 ```
 
-위 오케스트레이션 스킬들은 브랜치 생성 및 커밋 단계에서 `git-workflow` 플러그인의 에이전트를 활용합니다.
+위 오케스트레이션 스킬들은 브랜치 생성(해당되는 경우) 및 커밋 단계에서 `git-workflow` 플러그인의 에이전트를 활용합니다.
 
 ```mermaid
 graph LR
-    WOI["/work-on-issue"] & WFS["/work-from-scratch"] -->|사용| BC
-    WOI & WOP["/work-on-pr"] & WFS -->|사용| AC
+    WOI["/work-on-issue"] -->|사용| BC
+    WFS["/work-from-scratch"] -->|사용| BC
+    WOI -->|사용| AC
+    WOP["/work-on-pr"] -->|사용| AC
+    WFS -->|사용| AC
 
     subgraph GW ["git-workflow 플러그인"]
         BC["@branch-creator"]
