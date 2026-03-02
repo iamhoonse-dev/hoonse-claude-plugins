@@ -23,8 +23,8 @@ tests/
 │   │   ├── __init__.py
 │   │   └── test_{domain}_operator.py         # 커스텀 Operator 단위 테스트
 │   └── hooks/
-│   │   ├── __init__.py
-│   │   └── test_{domain}_hook.py             # 커스텀 Hook 단위 테스트
+│       ├── __init__.py
+│       └── test_{domain}_hook.py             # 커스텀 Hook 단위 테스트
 └── integration/
     ├── __init__.py
     └── test_{domain}_{pipeline}_integration.py  # 통합 테스트
