@@ -19,12 +19,12 @@ tests/
 │   ├── dags/
 │   │   ├── __init__.py
 │   │   └── test_{domain}_{pipeline}_dag.py   # DAG 구조 테스트
-│   └── operators/
-│       ├── __init__.py
-│       └── test_{domain}_operator.py         # 커스텀 Operator 단위 테스트
+│   ├── operators/
+│   │   ├── __init__.py
+│   │   └── test_{domain}_operator.py         # 커스텀 Operator 단위 테스트
 │   └── hooks/
-│       ├── __init__.py
-│       └── test_{domain}_hook.py             # 커스텀 Hook 단위 테스트
+│   │   ├── __init__.py
+│   │   └── test_{domain}_hook.py             # 커스텀 Hook 단위 테스트
 └── integration/
     ├── __init__.py
     └── test_{domain}_{pipeline}_integration.py  # 통합 테스트
@@ -237,7 +237,7 @@ LocalExecutor 기반으로 실제 DAG를 실행하여 전체 파이프라인을 
 # tests/integration/test_sales_daily_report_integration.py
 
 import pytest
-from airflow.models import DagBag, DagRun, TaskInstance
+from airflow.models import DagBag, TaskInstance
 from airflow.utils.state import DagRunState, TaskInstanceState
 from airflow.utils.types import DagRunType
 
@@ -252,7 +252,7 @@ class TestSalesDailyReportIntegration:
         self,
         dag_bag: DagBag,
         mock_airflow_conn: MagicMock,
-        mock_airflow_var: MagicMock,
+        mock_airflow_var: None,
     ) -> None:
         """DAG가 성공적으로 실행되는지 확인합니다."""
         import pendulum
@@ -264,7 +264,7 @@ class TestSalesDailyReportIntegration:
         with create_session() as session:
             dag_run = dag.create_dagrun(
                 state=DagRunState.RUNNING,
-                execution_date=logical_date,
+                logical_date=logical_date,
                 run_id=f"test_run_{logical_date.isoformat()}",
                 run_type=DagRunType.MANUAL,
                 session=session,

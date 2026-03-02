@@ -33,8 +33,10 @@ project/
 │   ├── unit/
 │   │   ├── dags/
 │   │   │   └── test_{domain}_{pipeline}_dag.py
-│   │   └── operators/
-│   │       └── test_{domain}_operator.py
+│   │   ├── operators/
+│   │   │   └── test_{domain}_operator.py
+│   │   └── hooks/
+│   │       └── test_{domain}_hook.py
 │   └── integration/
 │       └── test_{domain}_{pipeline}_integration.py
 ├── config/
