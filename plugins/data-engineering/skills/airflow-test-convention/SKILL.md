@@ -71,8 +71,8 @@ class TestSalesDailyReportDag:
             f"누락된 태스크: {expected_task_ids - actual_task_ids}"
         )
 
-    def test_dag_has_no_import_errors(self, dag_bag: DagBag) -> None:
-        """DAG 파일에 임포트 오류가 없는지 확인합니다."""
+    def test_dag_is_accessible(self, dag_bag: DagBag) -> None:
+        """DAG가 DagBag에서 조회 가능한지 확인합니다."""
         dag = dag_bag.get_dag(self.DAG_ID)
         assert dag is not None
 
@@ -237,6 +237,7 @@ LocalExecutor 기반으로 실제 DAG를 실행하여 전체 파이프라인을 
 # tests/integration/test_sales_daily_report_integration.py
 
 import pytest
+from unittest.mock import MagicMock
 from airflow.models import DagBag, TaskInstance
 from airflow.utils.state import DagRunState, TaskInstanceState
 from airflow.utils.types import DagRunType

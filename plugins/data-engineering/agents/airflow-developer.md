@@ -88,15 +88,21 @@ project/
 │   └── hooks/
 │       └── custom_hook.py       # Custom hooks
 ├── tests/
-│   └── dags/
-│       └── test_{pipeline_name}_dag.py
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── unit/
+│   │   └── dags/
+│   │       └── test_{pipeline_name}_dag.py
+│   └── integration/
+│       └── test_{pipeline_name}_integration.py
 └── requirements.txt
 ```
 
 ### DAG Definition Pattern
 
 ```python
-from datetime import datetime, timedelta
+import pendulum
+from datetime import timedelta
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -115,7 +121,7 @@ with DAG(
     default_args=default_args,
     description="Example ETL pipeline",
     schedule="@daily",
-    start_date=datetime(2024, 1, 1),
+    start_date=pendulum.datetime(2024, 1, 1, tz="UTC"),
     catchup=False,
     tags=["etl", "example"],
 ) as dag:

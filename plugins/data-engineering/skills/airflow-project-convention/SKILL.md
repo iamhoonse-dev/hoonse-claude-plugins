@@ -30,14 +30,20 @@ project/
 │       └── {domain}_hook.py         # 커스텀 훅
 ├── tests/
 │   ├── __init__.py
+│   ├── conftest.py
 │   ├── unit/
+│   │   ├── __init__.py
 │   │   ├── dags/
+│   │   │   ├── __init__.py
 │   │   │   └── test_{domain}_{pipeline}_dag.py
 │   │   ├── operators/
+│   │   │   ├── __init__.py
 │   │   │   └── test_{domain}_operator.py
 │   │   └── hooks/
+│   │       ├── __init__.py
 │   │       └── test_{domain}_hook.py
 │   └── integration/
+│       ├── __init__.py
 │       └── test_{domain}_{pipeline}_integration.py
 ├── config/
 │   └── airflow.cfg                  # Airflow 설정 (로컬 개발용)
