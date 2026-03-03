@@ -45,49 +45,7 @@ graph LR
 
 ### 🔧 Skills
 
-Skills는 슬래시 명령어로 직접 호출합니다.
-
-#### airflow-project-convention
-
-##### with plugin namespace
-
-```
-/data-engineering:airflow-project-convention
-```
-
-##### without plugin namespace
-
-```
-/airflow-project-convention
-```
-
-#### airflow-component-guide
-
-##### with plugin namespace
-
-```
-/data-engineering:airflow-component-guide
-```
-
-##### without plugin namespace
-
-```
-/airflow-component-guide
-```
-
-#### airflow-test-convention
-
-##### with plugin namespace
-
-```
-/data-engineering:airflow-test-convention
-```
-
-##### without plugin namespace
-
-```
-/airflow-test-convention
-```
+Skills는 에이전트가 작업 수행 시 자동으로 참조하는 지침형 규약입니다. 직접 호출하지 않아도 관련 에이전트가 활성화될 때 자동으로 적용됩니다.
 
 ### 🤖 Agents
 
