@@ -229,6 +229,10 @@ class TestSalesDailyReportFunctions:
         assert result[0]["Id"] == "001"
 ```
 
+> **주의**: `airflow-component-guide`의 권장 패턴처럼 `@task` 함수를 `@dag` 내부에 중첩 정의한 경우,
+> 모듈 레벨에서 직접 임포트할 수 없습니다. 이 경우 비즈니스 로직을 별도 헬퍼 함수(`_extract_sales_data` 등)로
+> 분리하고 헬퍼 함수를 테스트하거나, 통합 테스트(Section 5)의 `dag.test()` 방식을 사용합니다.
+
 ### 5. 통합 테스트
 
 LocalExecutor 기반으로 실제 DAG를 실행하여 전체 파이프라인을 검증합니다.
@@ -238,7 +242,7 @@ LocalExecutor 기반으로 실제 DAG를 실행하여 전체 파이프라인을 
 
 import pytest
 from unittest.mock import MagicMock
-from airflow.models import DagBag, TaskInstance
+from airflow.models import DagBag
 from airflow.utils.state import DagRunState, TaskInstanceState
 from airflow.utils.types import DagRunType
 
@@ -272,8 +276,9 @@ class TestSalesDailyReportIntegration:
             )
 
             for task in dag.tasks:
-                ti = TaskInstance(task=task, run_id=dag_run.run_id)
+                ti = dag_run.get_task_instance(task_id=task.task_id, session=session)
                 ti.run(ignore_all_deps=True, ignore_ti_state=True, session=session)
+                session.refresh(ti)
                 assert ti.state == TaskInstanceState.SUCCESS, (
                     f"태스크 '{task.task_id}' 실패: {ti.state}"
                 )
@@ -353,7 +358,7 @@ context["logical_date"]
 context["data_interval_start"]
 context["data_interval_end"]
 
-# Airflow v2 이하 방식 (v3에서 deprecated)
+# Airflow v2 이하 방식 (v3에서 제거됨)
 context["execution_date"]
 context["next_execution_date"]
 ```

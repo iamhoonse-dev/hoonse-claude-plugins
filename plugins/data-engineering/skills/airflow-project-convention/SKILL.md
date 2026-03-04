@@ -226,6 +226,8 @@ with DAG(dag_id="...", schedule=CustomTimetable(), ...) as dag:
 신규 DAG는 기본적으로 `catchup=False`를 적용합니다. 과거 데이터 백필이 명시적으로 필요한 경우에만 `catchup=True`를 사용하고 그 이유를 주석으로 명시합니다.
 
 ```python
+import pendulum
+
 with DAG(
     dag_id="sales.daily_report",
     schedule="@daily",
