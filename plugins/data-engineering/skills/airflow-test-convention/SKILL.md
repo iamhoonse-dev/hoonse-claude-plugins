@@ -189,62 +189,89 @@ class TestSalesforceHook:
 
 ### 4. TaskFlow 함수 테스트
 
-`@task` 데코레이터 함수는 일반 Python 함수처럼 직접 호출하여 테스트합니다.
+`@task` 데코레이터로 감싼 비즈니스 로직은 **헬퍼 함수로 분리**하여 테스트합니다. 이 방식이 공식 권장 패턴입니다.
+
+#### 권장 패턴: 헬퍼 함수 분리
+
+```python
+# dags/sales_daily_report_dag.py
+
+from airflow.decorators import dag, task
+
+
+def _extract_sales_data(date: str) -> dict:
+    """판매 데이터 추출 로직 (직접 테스트 가능한 헬퍼 함수)."""
+    ...
+    return {"records": [...]}
+
+
+def _transform_data(raw_data: dict) -> list:
+    """데이터 변환 로직 (직접 테스트 가능한 헬퍼 함수)."""
+    return [r for r in raw_data["records"] if r.get("Amount") is not None]
+
+
+@dag(dag_id="sales.daily_report", ...)
+def sales_daily_report_dag():
+
+    @task
+    def extract_sales_data(date: str) -> dict:
+        return _extract_sales_data(date)
+
+    @task
+    def transform_data(raw_data: dict) -> list:
+        return _transform_data(raw_data)
+
+    raw = extract_sales_data(date="{{ ds }}")
+    transform_data(raw)
+```
 
 ```python
 # tests/unit/dags/test_sales_daily_report_dag.py (함수 테스트 부분)
 
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
-import pytest
-
-# DAG 모듈에서 태스크 함수를 직접 임포트
-from dags.sales_daily_report_dag import extract_sales_data, transform_data
+from dags.sales_daily_report_dag import _extract_sales_data, _transform_data
 
 
 class TestSalesDailyReportFunctions:
     """sales.daily_report DAG의 태스크 함수 단위 테스트."""
 
     def test_extract_sales_data_returns_dict(self) -> None:
-        """extract_sales_data()가 딕셔너리를 반환하는지 확인합니다."""
+        """_extract_sales_data()가 딕셔너리를 반환하는지 확인합니다."""
         with patch("dags.sales_daily_report_dag.SalesforceHook") as mock_hook:
             mock_hook.return_value.query.return_value = [
                 {"Id": "001", "Amount": 1000.0}
             ]
-            # @task 데코레이터 함수는 .function 속성으로 원본 함수에 접근
-            result = extract_sales_data.function(date="2024-01-01")
+            result = _extract_sales_data(date="2024-01-01")
             assert isinstance(result, dict)
             assert "records" in result
 
     def test_transform_data_filters_invalid_records(self) -> None:
-        """transform_data()가 유효하지 않은 레코드를 필터링하는지 확인합니다."""
+        """_transform_data()가 유효하지 않은 레코드를 필터링하는지 확인합니다."""
         raw_data = {
             "records": [
                 {"Id": "001", "Amount": 1000.0},
                 {"Id": "002", "Amount": None},  # 유효하지 않은 레코드
             ]
         }
-        result = transform_data.function(raw_data=raw_data)
+        result = _transform_data(raw_data=raw_data)
         assert len(result) == 1
         assert result[0]["Id"] == "001"
 ```
 
-> **주의**: `airflow-component-guide`의 권장 패턴처럼 `@task` 함수를 `@dag` 내부에 중첩 정의한 경우,
-> 모듈 레벨에서 직접 임포트할 수 없습니다. 이 경우 비즈니스 로직을 별도 헬퍼 함수(`_extract_sales_data` 등)로
-> 분리하고 헬퍼 함수를 테스트하거나, 통합 테스트(Section 5)의 `dag.test()` 방식을 사용합니다.
+> **참고**: `@task` 객체의 `.function` 속성으로 원본 함수에 접근하는 방식은 공식 문서에 명시되지 않은 내부 API입니다.
+> 모듈 레벨에서 `@task`를 정의한 경우 작동할 수 있으나, 안정성을 위해 위의 헬퍼 함수 분리 패턴을 사용합니다.
 
 ### 5. 통합 테스트
 
-LocalExecutor 기반으로 실제 DAG를 실행하여 전체 파이프라인을 검증합니다.
+`dag.test()`를 사용하여 실제 DAG를 실행하고 전체 파이프라인을 검증합니다. 이것이 Airflow 공식 권장 패턴입니다.
 
 ```python
 # tests/integration/test_sales_daily_report_integration.py
 
 import pytest
-from unittest.mock import MagicMock
 from airflow.models import DagBag
-from airflow.utils.state import DagRunState, TaskInstanceState
-from airflow.utils.types import DagRunType
+from airflow.utils.state import TaskInstanceState
 
 
 class TestSalesDailyReportIntegration:
@@ -253,36 +280,21 @@ class TestSalesDailyReportIntegration:
     DAG_ID = "sales.daily_report"
 
     @pytest.mark.integration
-    def test_dag_runs_successfully(
-        self,
-        dag_bag: DagBag,
-        mock_airflow_conn: MagicMock,
-        mock_airflow_var: None,
-    ) -> None:
+    def test_dag_runs_successfully(self, dag_bag: DagBag) -> None:
         """DAG가 성공적으로 실행되는지 확인합니다."""
-        import pendulum
-        from airflow.utils.session import create_session
-
         dag = dag_bag.get_dag(self.DAG_ID)
-        logical_date = pendulum.datetime(2024, 1, 1, tz="Asia/Seoul")
 
-        with create_session() as session:
-            dag_run = dag.create_dagrun(
-                state=DagRunState.RUNNING,
-                logical_date=logical_date,
-                run_id=f"test_run_{logical_date.isoformat()}",
-                run_type=DagRunType.MANUAL,
-                session=session,
+        dag_run = dag.test()
+
+        for task in dag.tasks:
+            ti = dag_run.get_task_instance(task_id=task.task_id)
+            assert ti.state == TaskInstanceState.SUCCESS, (
+                f"태스크 '{task.task_id}' 실패: {ti.state}"
             )
-
-            for task in dag.tasks:
-                ti = dag_run.get_task_instance(task_id=task.task_id, session=session)
-                ti.run(ignore_all_deps=True, ignore_ti_state=True, session=session)
-                session.refresh(ti)
-                assert ti.state == TaskInstanceState.SUCCESS, (
-                    f"태스크 '{task.task_id}' 실패: {ti.state}"
-                )
 ```
+
+> **참고**: `dag.test()`는 내부적으로 외부 시스템 mock 없이 DAG를 실행합니다. 외부 연결이 필요한 태스크는
+> `@task` 내부에서 mock 처리하거나, Section 4의 헬퍼 함수 단위 테스트로 커버합니다.
 
 ### 6. 공통 Fixture 패턴
 
