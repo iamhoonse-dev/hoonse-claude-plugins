@@ -49,9 +49,10 @@ Based on the test convention and project structure, write tests in this order:
    - Test both success and failure paths
 
 3. **TaskFlow Function Tests** (`tests/unit/dags/`):
-   - Import `@task`-decorated functions directly from DAG modules
-   - Call `.function` attribute to access the underlying Python function
-   - Test with realistic sample data
+   - Separate pure Python business logic into plain helper functions (not `@task`-wrapped)
+   - Import and test these helper functions directly from DAG modules
+   - Do NOT rely on the `.function` attribute of TaskFlow tasks (non-public internal API)
+   - Test with realistic sample data, including edge cases
 
 4. **Integration Tests** (`tests/integration/`):
    - Mark with `@pytest.mark.integration`
