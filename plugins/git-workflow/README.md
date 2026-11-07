@@ -47,22 +47,14 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/git-workflow:<skill-name>` 형태로 호출합니다.
+Skills는 `/git-workflow:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### commit-message
 
 `commit-message` 스킬은 `user-invocable: false`로 설정된 지침형 스킬입니다. Claude가 커밋 메시지를 작성할 때 자동으로 참조하며, 직접 호출하지 않아도 됩니다.
 
-##### with plugin namespace
-
 ```
 /git-workflow:commit-message
-```
-
-##### without plugin namespace
-
-```
-/commit-message
 ```
 
 ### 🤖 Agents

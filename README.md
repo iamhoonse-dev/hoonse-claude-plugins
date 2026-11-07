@@ -41,7 +41,7 @@ Issue 분석부터 브랜치 생성, 구현, 커밋, PR 생성까지 하나의 �
 
 ```mermaid
 graph TB
-    subgraph WOI ["/work-on-issue  (github-workflow)"]
+    subgraph WOI ["/github-workflow:work-on-issue"]
         direction TB
         WOI1["① @issue-fetcher"]
         WOI2["② @branch-creator"]
@@ -52,7 +52,7 @@ graph TB
         WOI1 --> WOI2 --> WOI3 --> WOI4 --> WOI5 --> WOI6
     end
 
-    subgraph WOP ["/work-on-pr  (github-workflow)"]
+    subgraph WOP ["/github-workflow:work-on-pr"]
         direction TB
         WOP1["① @pr-fetcher"]
         WOP2["② 브랜치 체크아웃"]
@@ -62,7 +62,7 @@ graph TB
         WOP1 --> WOP2 --> WOP3 --> WOP4 --> WOP5
     end
 
-    subgraph WFS ["/work-from-scratch  (github-workflow)"]
+    subgraph WFS ["/github-workflow:work-from-scratch"]
         direction TB
         WFS1["① 작업 정의"]
         WFS2["② @branch-creator"]
@@ -73,7 +73,7 @@ graph TB
         WFS1 --> WFS2 --> WFS3 --> WFS4 --> WFS5 --> WFS6
     end
 
-    subgraph ANAP ["/analyze-project  (project-analyzer)"]
+    subgraph ANAP ["/project-analyzer:analyze-project"]
         direction TB
         ANAP0["① 분석 범위 결정"]
         ANAP1["② 병렬 분석"]
@@ -100,10 +100,10 @@ graph TB
 
 ```mermaid
 graph LR
-    WOI["/work-on-issue"] -->|사용| BC
-    WFS["/work-from-scratch"] -->|사용| BC
+    WOI["/github-workflow:work-on-issue"] -->|사용| BC
+    WFS["/github-workflow:work-from-scratch"] -->|사용| BC
     WOI -->|사용| AC
-    WOP["/work-on-pr"] -->|사용| AC
+    WOP["/github-workflow:work-on-pr"] -->|사용| AC
     WFS -->|사용| AC
 
     subgraph GW ["git-workflow 플러그인"]
@@ -140,20 +140,12 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/<plugin-name>:<skill-name>` 형태로 호출합니다.
+Skills는 `/<plugin-name>:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### commit-message (git-workflow)
 
-##### with plugin namespace
-
 ```
 /git-workflow:commit-message
-```
-
-##### without plugin namespace
-
-```
-/commit-message
 ```
 
 ### 🤖 Agents

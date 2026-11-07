@@ -54,34 +54,18 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/github-workflow:<skill-name>` 형태로 호출합니다.
+Skills는 `/github-workflow:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### work-on-issue
-
-##### with plugin namespace
 
 ```
 /github-workflow:work-on-issue 42
 ```
 
-##### without plugin namespace
-
-```
-/work-on-issue 42
-```
-
 #### work-from-scratch
-
-##### with plugin namespace
 
 ```
 /github-workflow:work-from-scratch 로그인 페이지에 다크 모드 토글 추가
-```
-
-##### without plugin namespace
-
-```
-/work-from-scratch 로그인 페이지에 다크 모드 토글 추가
 ```
 
 #### pr-verification
@@ -94,16 +78,8 @@ Skills는 `/github-workflow:<skill-name>` 형태로 호출합니다.
 
 #### work-on-pr
 
-##### with plugin namespace
-
 ```
 /github-workflow:work-on-pr 42
-```
-
-##### without plugin namespace
-
-```
-/work-on-pr 42
 ```
 
 ### 🤖 Agents

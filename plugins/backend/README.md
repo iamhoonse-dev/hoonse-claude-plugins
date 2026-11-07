@@ -42,22 +42,14 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/backend:<skill-name>` 형태로 호출합니다.
+Skills는 `/backend:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### api-convention
 
 `api-convention` 스킬은 `user-invocable: false`로 설정된 지침형 스킬입니다. `fastapi-developer` 에이전트가 API를 구현할 때 자동으로 참조하며, 직접 호출하지 않아도 됩니다.
 
-##### with plugin namespace
-
 ```
 /backend:api-convention
-```
-
-##### without plugin namespace
-
-```
-/api-convention
 ```
 
 ### 🤖 Agents

@@ -176,7 +176,7 @@ user-invocable: true
 ---
 ```
 
-- `user-invocable: true` — 사용자가 `/skill-name` 명령으로 직접 호출 가능한 스킬
+- `user-invocable: true` — 사용자가 `/<plugin-name>:<skill-name>` 명령으로 직접 호출 가능한 스킬 (플러그인 스킬은 네임스페이스를 생략할 수 없음)
 - `user-invocable: false` — Claude가 내부적으로 참조하는 지침형 또는 지식형 스킬
 
 직접 호출형 스킬의 경우 `context`, `agent` 등 추가 필드가 필요할 수 있습니다.
