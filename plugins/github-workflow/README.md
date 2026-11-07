@@ -1,6 +1,6 @@
 # github-workflow
 
-GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인
+GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 전 검증, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인
 
 ## 💁 개요
 
@@ -17,6 +17,7 @@ graph LR
     D --> D2[work-from-scratch<br/>자유 작업 워크플로우 오케스트레이션]
     D --> D3[work-on-pr<br/>PR 리뷰 대응 워크플로우 오케스트레이션]
     D --> D4[pr-convention<br/>PR 작성 규약]
+    D --> D5[pr-verification<br/>PR 전 검증]
 ```
 
 > **의존성**: 이 플러그인은 `git-workflow` 플러그인의 `branch-creator`, `auto-committer` 에이전트를 활용합니다. `git-workflow` 플러그인이 함께 설치되어 있어야 전체 워크플로우가 정상 동작합니다.
@@ -83,6 +84,14 @@ Skills는 `/github-workflow:<skill-name>` 형태로 호출합니다.
 /work-from-scratch 로그인 페이지에 다크 모드 토글 추가
 ```
 
+#### pr-verification
+
+구현을 마친 뒤 PR 을 올리기 전에 직접 호출할 수도 있습니다. (`work-on-issue`, `work-from-scratch` 는 5단계에서 자동으로 사용)
+
+```
+/github-workflow:pr-verification
+```
+
 #### work-on-pr
 
 ##### with plugin namespace
@@ -135,10 +144,11 @@ PR #42 리뷰 분석해줘
 
 | 이름 | 타입 | 설명 |
 |------|------|------|
-| work-on-issue | 직접 호출형 | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
-| work-from-scratch | 직접 호출형 | Issue 없이 작업 설명을 받아 작업 정의 → 브랜치 생성 → 계획 수립 → 구현 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
+| work-on-issue | 직접 호출형 | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 → 검증 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
+| work-from-scratch | 직접 호출형 | Issue 없이 작업 설명을 받아 작업 정의 → 브랜치 생성 → 계획 수립 → 구현 → 검증 → 푸시 → PR 생성까지 전체 워크플로우를 단계별로 오케스트레이션합니다. |
 | work-on-pr | 직접 호출형 | PR 번호를 받아 리뷰 분석 → 브랜치 체크아웃 → 계획 수립 → 구현 → 푸시 → PR 코멘트까지 전체 리뷰 대응 워크플로우를 단계별로 오케스트레이션합니다. |
-| pr-convention | 지침형 | PR 제목/본문 작성 규약을 정의합니다. Conventional Commits 기반의 제목 형식, 한국어 명사형, 72자 제한 등의 규칙을 포함합니다. |
+| pr-convention | 지침형 | **범용 기본** PR 규약입니다. 레포의 PR 템플릿이 있으면 그 구조를 따르고, 없으면 기본 구조를 사용합니다. |
+| pr-verification | 직접 호출형 | PR 전에 로컬/브라우저 검증을 하고, 검증한 것과 검증하지 못한 것, 머지 후 확인 절차를 구분해 정리합니다. |
 
 ### 🤖 Agents
 
@@ -147,6 +157,26 @@ PR #42 리뷰 분석해줘
 | issue-fetcher | GitHub Issue의 상세 정보를 `gh` CLI로 조회하고, 상태/라벨/핵심 요구사항/작업 유형을 구조화된 요약으로 반환합니다. |
 | pr-fetcher | GitHub PR의 리뷰 정보를 `gh` CLI로 조회하고, 리뷰 결정/인라인 코멘트(파일별 그룹)/일반 토론을 구조화된 요약으로 반환합니다. |
 | pr-creator | 브랜치의 변경 사항을 분석하고, PR 규약에 따라 제목과 본문을 작성한 뒤 `gh pr create`로 PR을 생성합니다. |
+
+## 🔧 커스터마이징
+
+### 확인 정책
+
+`work-on-issue`, `work-from-scratch` 는 기본적으로 **모든 단계에서** 사용자 확인을 받습니다.
+프로젝트의 `CLAUDE.md` / `AGENTS.md` 에 확인 정책을 적으면 그에 따릅니다.
+
+```markdown
+- 확인은 주요 지점에서만 받아요: 계획 승인, 푸시/PR 생성 등 외부에 반영되는 작업 직전
+```
+
+### PR 규약 오버라이딩
+
+`pr-creator` 는 아래 순서로 규약을 찾고, 처음 발견한 것을 따릅니다.
+
+1. 프로젝트 스킬 `.claude/skills/pr-convention/SKILL.md`
+1. `CLAUDE.md` / `AGENTS.md` 의 PR 규칙
+1. 레포의 PR 템플릿 (`.github/pull_request_template.md` 등) — 본문은 템플릿 섹션을 빠짐없이 채움
+1. 플러그인 기본 규약 (`pr-convention` 스킬)
 
 ## ⚖️ 라이선스
 
