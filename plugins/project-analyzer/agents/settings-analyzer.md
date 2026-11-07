@@ -1,24 +1,6 @@
 ---
 name: settings-analyzer
-description: "Use this agent to analyze consistency between plugin metadata files. This agent checks that plugin.json entries match marketplace.json, settings.json references, Issue template dropdowns, and PR template plugin lists.
-
-Examples:
-- <example>
-  Context: The user wants to verify all settings files are in sync after adding a new plugin.
-  user: \"설정 파일 정합성을 검사해줘\"
-  assistant: \"settings-analyzer 에이전트를 사용하여 메타데이터 파일 간 정합성을 검사하겠습니다.\"
-  <commentary>
-  The user wants to validate settings consistency. Use the Task tool to launch the settings-analyzer agent to check plugin.json, marketplace.json, settings.json, and templates.
-  </commentary>
-</example>
-- <example>
-  Context: The user added a new plugin and wants to make sure all references are updated.
-  user: \"새 플러그인 등록이 빠진 곳 없는지 확인해줘\"
-  assistant: \"settings-analyzer 에이전트를 사용하여 모든 설정 파일에 새 플러그인이 등록되었는지 검사하겠습니다.\"
-  <commentary>
-  The user wants to check for missing registrations. Use the Task tool to launch the settings-analyzer agent.
-  </commentary>
-</example>"
+description: "Use this agent to analyze consistency between plugin metadata files. This agent checks that plugin.json entries match marketplace.json, settings.json references, Issue template dropdowns, and PR template plugin lists.\n\nExamples:\n- <example>\n  Context: The user wants to verify all settings files are in sync after adding a new plugin.\n  user: \"설정 파일 정합성을 검사해줘\"\n  assistant: \"settings-analyzer 에이전트를 사용하여 메타데이터 파일 간 정합성을 검사하겠습니다.\"\n  <commentary>\n  The user wants to validate settings consistency. Use the Task tool to launch the settings-analyzer agent to check plugin.json, marketplace.json, settings.json, and templates.\n  </commentary>\n</example>\n- <example>\n  Context: The user added a new plugin and wants to make sure all references are updated.\n  user: \"새 플러그인 등록이 빠진 곳 없는지 확인해줘\"\n  assistant: \"settings-analyzer 에이전트를 사용하여 모든 설정 파일에 새 플러그인이 등록되었는지 검사하겠습니다.\"\n  <commentary>\n  The user wants to check for missing registrations. Use the Task tool to launch the settings-analyzer agent.\n  </commentary>\n</example>"
 tools: Glob, Grep, Read, Bash
 model: sonnet
 color: orange

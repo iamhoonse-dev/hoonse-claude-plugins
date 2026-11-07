@@ -1,7 +1,7 @@
 {
   "name": "git-workflow",
   "description": "로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "iamhoonse",

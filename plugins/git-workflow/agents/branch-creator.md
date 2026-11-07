@@ -1,32 +1,6 @@
 ---
 name: branch-creator
-description: "Use this agent when the user wants to create a new branch. This includes when the user asks to 'create branch', 'make a branch', 'new branch', or wants to start working on a new feature/fix. The agent reads the project's branch naming conventions, analyzes the user's intent, and creates a properly named branch from main.
-
-Examples:
-- <example>
-  Context: The user wants to start working on a new feature.
-  user: \"브랜치 만들어줘\"
-  assistant: \"branch-creator 에이전트를 사용하여 브랜치 네이밍 규약을 확인하고 새 브랜치를 생성하겠습니다.\"
-  <commentary>
-  The user wants to create a new branch. Use the Task tool to launch the branch-creator agent to read branch naming conventions, determine the branch name from context, and create the branch.
-  </commentary>
-</example>
-- <example>
-  Context: The user wants to create a branch for a specific task.
-  user: \"git-workflow 플러그인에 branch-creator 에이전트를 추가하는 브랜치를 만들어줘\"
-  assistant: \"branch-creator 에이전트를 사용하여 작업 내용에 맞는 브랜치를 생성하겠습니다.\"
-  <commentary>
-  The user described the task. Use the Task tool to launch the branch-creator agent which will derive the branch name (e.g., feat/git-workflow-add-branch-creator) and create it.
-  </commentary>
-</example>
-- <example>
-  Context: The user wants to start a new branch for a bug fix.
-  user: \"create a branch for fixing the commit message typo\"
-  assistant: \"I'll use the branch-creator agent to create a properly named branch for this bug fix.\"
-  <commentary>
-  The user wants a fix branch. Use the Task tool to launch the branch-creator agent to create fix/git-workflow-commit-message-typo or similar.
-  </commentary>
-</example>"
+description: "Use this agent when the user wants to create a new branch. This includes when the user asks to 'create branch', 'make a branch', 'new branch', or wants to start working on a new feature/fix. The agent reads the project's branch naming conventions, analyzes the user's intent, and creates a properly named branch from main.\n\nExamples:\n- <example>\n  Context: The user wants to start working on a new feature.\n  user: \"브랜치 만들어줘\"\n  assistant: \"branch-creator 에이전트를 사용하여 브랜치 네이밍 규약을 확인하고 새 브랜치를 생성하겠습니다.\"\n  <commentary>\n  The user wants to create a new branch. Use the Task tool to launch the branch-creator agent to read branch naming conventions, determine the branch name from context, and create the branch.\n  </commentary>\n</example>\n- <example>\n  Context: The user wants to create a branch for a specific task.\n  user: \"git-workflow 플러그인에 branch-creator 에이전트를 추가하는 브랜치를 만들어줘\"\n  assistant: \"branch-creator 에이전트를 사용하여 작업 내용에 맞는 브랜치를 생성하겠습니다.\"\n  <commentary>\n  The user described the task. Use the Task tool to launch the branch-creator agent which will derive the branch name (e.g., feat/git-workflow-add-branch-creator) and create it.\n  </commentary>\n</example>\n- <example>\n  Context: The user wants to start a new branch for a bug fix.\n  user: \"create a branch for fixing the commit message typo\"\n  assistant: \"I'll use the branch-creator agent to create a properly named branch for this bug fix.\"\n  <commentary>\n  The user wants a fix branch. Use the Task tool to launch the branch-creator agent to create fix/git-workflow-commit-message-typo or similar.\n  </commentary>\n</example>"
 tools: Glob, Grep, Read, Bash
 model: sonnet
 color: green
