@@ -180,8 +180,8 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 |------|------|
 | [session-logger](./plugins/session-logger) | Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인 |
 | [technical-writing](./plugins/technical-writing) | 기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인 |
-| [git-workflow](./plugins/git-workflow) | 로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인 |
-| [github-workflow](./plugins/github-workflow) | GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인 |
+| [git-workflow](./plugins/git-workflow) | 로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍)과 기본 브랜치 직접 커밋 차단 훅을 제공하는 플러그인 |
+| [github-workflow](./plugins/github-workflow) | GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 전 검증, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인 |
 | [backend](./plugins/backend) | RESTful API 설계 규약과 FastAPI 백엔드 개발 전문 에이전트를 제공하는 플러그인 |
 | [data-engineering](./plugins/data-engineering) | Apache Airflow DAG 개발 전문 에이전트를 제공하는 데이터 엔지니어링 플러그인 |
 | [project-analyzer](./plugins/project-analyzer) | 플러그인 마켓플레이스 프로젝트의 구조 일관성, 문서 품질, 설정 정합성을 자동 분석하고 GitHub Issue로 등록하는 플러그인 |

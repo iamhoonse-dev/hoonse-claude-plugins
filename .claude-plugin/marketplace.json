@@ -33,8 +33,8 @@
     },
     {
       "name": "git-workflow",
-      "description": "로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍 등)을 관리하는 플러그인",
-      "version": "0.0.2",
+      "description": "로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍)과 기본 브랜치 직접 커밋 차단 훅을 제공하는 플러그인",
+      "version": "0.1.0",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
@@ -45,8 +45,8 @@
     },
     {
       "name": "github-workflow",
-      "description": "GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인",
-      "version": "0.0.3",
+      "description": "GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 전 검증, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인",
+      "version": "0.1.0",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
