@@ -18,20 +18,12 @@
 
 ### 📖 Skills
 
-Skills는 `/<plugin-name>:<skill-name>` 형태로 호출합니다.
+Skills는 `/<plugin-name>:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### {Skill name}
 
-##### with plugin namespace
-
 ```
-{Usage code block}
-```
-
-##### without plugin namespace
-
-```
-{Usage code block}
+/<plugin-name>:<skill-name> {arguments}
 ```
 
 ### 🤖 Agents

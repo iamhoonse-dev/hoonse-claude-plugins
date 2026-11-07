@@ -11,7 +11,7 @@ user-invocable: true
 **인자**: `$ARGUMENTS`로 분석 범위를 지정할 수 있습니다:
 - 인자 없음: 전체 프로젝트 분석
 - 카테고리 지정: `structure`, `docs`, `settings` 중 택
-- 플러그인명 지정: 특정 플러그인만 분석 (예: `/analyze-project git-workflow`)
+- 플러그인명 지정: 특정 플러그인만 분석 (예: `/project-analyzer:analyze-project git-workflow`)
 
 > **중요**: 각 단계가 끝날 때마다 결과를 개발자에게 보고하고, **다음 단계로 진행할지 확인**을 받으세요.
 

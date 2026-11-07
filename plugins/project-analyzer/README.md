@@ -50,32 +50,24 @@ graph LR
 
 ### 📖 Skills
 
-Skills는 `/project-analyzer:<skill-name>` 형태로 호출합니다.
+Skills는 `/project-analyzer:<skill-name>` 형태로 호출합니다. 플러그인 스킬은 네임스페이스(`<plugin-name>:`)를 생략할 수 없습니다.
 
 #### analyze-project
-
-##### with plugin namespace
 
 ```
 /project-analyzer:analyze-project
 ```
 
-##### without plugin namespace
-
-```
-/analyze-project
-```
-
 ##### 특정 플러그인만 분석
 
 ```
-/analyze-project git-workflow
+/project-analyzer:analyze-project git-workflow
 ```
 
 ##### 특정 카테고리만 분석
 
 ```
-/analyze-project structure
+/project-analyzer:analyze-project structure
 ```
 
 ### 🤖 Agents

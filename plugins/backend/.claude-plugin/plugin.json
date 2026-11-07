@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "description": "RESTful API 설계 규약과 FastAPI 백엔드 개발 전문 에이전트를 제공하는 플러그인",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "iamhoonse",

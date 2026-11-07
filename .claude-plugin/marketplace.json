@@ -22,7 +22,7 @@
     {
       "name": "technical-writing",
       "description": "기술 문서 작성 전문 에이전트와 README 구조 규약을 제공하는 플러그인",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
@@ -34,7 +34,7 @@
     {
       "name": "git-workflow",
       "description": "로컬 Git 워크플로우 규약(커밋 메시지, 브랜치 네이밍)과 기본 브랜치 직접 커밋 차단 훅을 제공하는 플러그인",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
@@ -46,7 +46,7 @@
     {
       "name": "github-workflow",
       "description": "GitHub 개발 워크플로우(이슈 기반 작업, 자유 작업, PR 전 검증, PR 리뷰 대응, PR 생성 등)를 자동화하는 플러그인",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
@@ -58,7 +58,7 @@
     {
       "name": "project-analyzer",
       "description": "플러그인 마켓플레이스 프로젝트의 구조 일관성, 문서 품질, 설정 정합성을 자동 분석하고 GitHub Issue로 등록하는 플러그인",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
@@ -70,7 +70,7 @@
     {
       "name": "backend",
       "description": "RESTful API 설계 규약과 FastAPI 백엔드 개발 전문 에이전트를 제공하는 플러그인",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "author": {
         "name": "iamhoonse",
         "email": "iamhoonse+dev@gmail.com"
