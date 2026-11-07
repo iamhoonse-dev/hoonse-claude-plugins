@@ -1,4 +1,4 @@
-# claude-logger
+# session-logger
 
 Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하는 플러그인
 
@@ -6,7 +6,7 @@ Claude Code 세션의 도구 사용 및 프롬프트를 자동으로 로깅하�
 
 ```mermaid
 graph LR
-    A[claude-logger] --> B[Hooks]
+    A[session-logger] --> B[Hooks]
 
     B --> B1[PreToolUse<br/>도구 사용 로깅]
     B --> B2[UserPromptSubmit<br/>프롬프트 로깅]
@@ -23,7 +23,7 @@ graph LR
 /plugin marketplace add iamhoonse-dev/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install claude-logger@hoonse-claude-plugins
+/plugin install session-logger@hoonse-claude-plugins
 ```
 
 ### 로컬 경로에서 추가
@@ -33,7 +33,7 @@ graph LR
 /plugin marketplace add /path/to/hoonse-claude-plugins
 
 # 플러그인 설치
-/plugin install claude-logger@hoonse-claude-plugins
+/plugin install session-logger@hoonse-claude-plugins
 ```
 
 ## 🧑‍💻 사용 예시

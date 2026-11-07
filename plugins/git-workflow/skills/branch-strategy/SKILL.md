@@ -52,7 +52,7 @@ Conventional Commits의 type을 그대로 사용합니다:
 feat/git-workflow-add-auto-committer
 fix/git-workflow-commit-message-typo
 docs/contributing-add-pr-guide
-refactor/claude-logger-hook-cleanup
+refactor/session-logger-hook-cleanup
 ci/add-github-issue-templates
 ```
 

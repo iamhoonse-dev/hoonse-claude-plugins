@@ -1,24 +1,6 @@
 ---
 name: docs-analyzer
-description: "Use this agent to analyze plugin documentation quality. This agent checks README completeness, Mermaid diagrams, documentation accuracy against actual components, and content freshness for all plugins in the marketplace.
-
-Examples:
-- <example>
-  Context: The user wants to check if all plugin READMEs follow the documentation conventions.
-  user: \"플러그인 문서 품질을 검사해줘\"
-  assistant: \"docs-analyzer 에이전트를 사용하여 모든 플러그인의 문서 품질을 검사하겠습니다.\"
-  <commentary>
-  The user wants to validate plugin documentation. Use the Task tool to launch the docs-analyzer agent to check README sections, diagrams, and accuracy.
-  </commentary>
-</example>
-- <example>
-  Context: The user wants to check a specific plugin's documentation.
-  user: \"git-workflow 문서가 규약에 맞는지 확인해줘\"
-  assistant: \"docs-analyzer 에이전트를 사용하여 git-workflow의 문서 품질을 검사하겠습니다.\"
-  <commentary>
-  The user wants to validate a specific plugin's documentation. Use the Task tool to launch the docs-analyzer agent with the plugin name.
-  </commentary>
-</example>"
+description: "Use this agent to analyze plugin documentation quality. This agent checks README completeness, Mermaid diagrams, documentation accuracy against actual components, and content freshness for all plugins in the marketplace.\n\nExamples:\n- <example>\n  Context: The user wants to check if all plugin READMEs follow the documentation conventions.\n  user: \"플러그인 문서 품질을 검사해줘\"\n  assistant: \"docs-analyzer 에이전트를 사용하여 모든 플러그인의 문서 품질을 검사하겠습니다.\"\n  <commentary>\n  The user wants to validate plugin documentation. Use the Task tool to launch the docs-analyzer agent to check README sections, diagrams, and accuracy.\n  </commentary>\n</example>\n- <example>\n  Context: The user wants to check a specific plugin's documentation.\n  user: \"git-workflow 문서가 규약에 맞는지 확인해줘\"\n  assistant: \"docs-analyzer 에이전트를 사용하여 git-workflow의 문서 품질을 검사하겠습니다.\"\n  <commentary>\n  The user wants to validate a specific plugin's documentation. Use the Task tool to launch the docs-analyzer agent with the plugin name.\n  </commentary>\n</example>"
 tools: Glob, Grep, Read, Bash
 model: sonnet
 color: magenta

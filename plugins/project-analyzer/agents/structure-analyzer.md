@@ -1,24 +1,6 @@
 ---
 name: structure-analyzer
-description: "Use this agent to analyze plugin directory structure consistency. This agent checks for required files (plugin.json, README.md), validates SKILL.md and Agent .md frontmatter, and verifies naming conventions (kebab-case) across all plugins in the marketplace.
-
-Examples:
-- <example>
-  Context: The user wants to check if all plugins follow the correct directory structure.
-  user: \"플러그인 구조를 검사해줘\"
-  assistant: \"structure-analyzer 에이전트를 사용하여 모든 플러그인의 디렉토리 구조를 검사하겠습니다.\"
-  <commentary>
-  The user wants to validate plugin structures. Use the Task tool to launch the structure-analyzer agent to check required files, frontmatter, and naming conventions.
-  </commentary>
-</example>
-- <example>
-  Context: The user wants to check a specific plugin's structure.
-  user: \"git-workflow 구조가 올바른지 확인해줘\"
-  assistant: \"structure-analyzer 에이전트를 사용하여 git-workflow의 디렉토리 구조를 검사하겠습니다.\"
-  <commentary>
-  The user wants to validate a specific plugin's structure. Use the Task tool to launch the structure-analyzer agent with the plugin name.
-  </commentary>
-</example>"
+description: "Use this agent to analyze plugin directory structure consistency. This agent checks for required files (plugin.json, README.md), validates SKILL.md and Agent .md frontmatter, and verifies naming conventions (kebab-case) across all plugins in the marketplace.\n\nExamples:\n- <example>\n  Context: The user wants to check if all plugins follow the correct directory structure.\n  user: \"플러그인 구조를 검사해줘\"\n  assistant: \"structure-analyzer 에이전트를 사용하여 모든 플러그인의 디렉토리 구조를 검사하겠습니다.\"\n  <commentary>\n  The user wants to validate plugin structures. Use the Task tool to launch the structure-analyzer agent to check required files, frontmatter, and naming conventions.\n  </commentary>\n</example>\n- <example>\n  Context: The user wants to check a specific plugin's structure.\n  user: \"git-workflow 구조가 올바른지 확인해줘\"\n  assistant: \"structure-analyzer 에이전트를 사용하여 git-workflow의 디렉토리 구조를 검사하겠습니다.\"\n  <commentary>\n  The user wants to validate a specific plugin's structure. Use the Task tool to launch the structure-analyzer agent with the plugin name.\n  </commentary>\n</example>"
 tools: Glob, Grep, Read, Bash
 model: sonnet
 color: red

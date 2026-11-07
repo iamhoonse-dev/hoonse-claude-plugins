@@ -10,7 +10,7 @@ body:
       options:
         - "Project README (README.md)"
         - "Contributing Guide (CONTRIBUTING.md)"
-        - "claude-logger README"
+        - "session-logger README"
         - "technical-writing README"
         - "git-workflow README"
         - "github-workflow README"

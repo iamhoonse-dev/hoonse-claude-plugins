@@ -1,24 +1,6 @@
 ---
 name: issue-creator
-description: "Use this agent to create GitHub Issues from project-analyzer analysis results. This agent reads analysis reports, applies issue-convention rules (grouping, severity-based splitting), checks for duplicates, and creates issues with developer confirmation.
-
-Examples:
-- <example>
-  Context: Analysis is complete and the user wants to create issues for found problems.
-  user: \"분석 결과를 이슈로 등록해줘\"
-  assistant: \"issue-creator 에이전트를 사용하여 분석 결과를 GitHub Issue로 생성하겠습니다.\"
-  <commentary>
-  The user wants to convert analysis findings to GitHub Issues. Use the Task tool to launch the issue-creator agent to apply grouping rules and create issues.
-  </commentary>
-</example>
-- <example>
-  Context: The user wants to create issues only for errors.
-  user: \"error 항목만 이슈로 만들어줘\"
-  assistant: \"issue-creator 에이전트를 사용하여 error 심각도 항목만 이슈로 생성하겠습니다.\"
-  <commentary>
-  The user wants to create issues for errors only. Use the Task tool to launch the issue-creator agent with severity filtering.
-  </commentary>
-</example>"
+description: "Use this agent to create GitHub Issues from project-analyzer analysis results. This agent reads analysis reports, applies issue-convention rules (grouping, severity-based splitting), checks for duplicates, and creates issues with developer confirmation.\n\nExamples:\n- <example>\n  Context: Analysis is complete and the user wants to create issues for found problems.\n  user: \"분석 결과를 이슈로 등록해줘\"\n  assistant: \"issue-creator 에이전트를 사용하여 분석 결과를 GitHub Issue로 생성하겠습니다.\"\n  <commentary>\n  The user wants to convert analysis findings to GitHub Issues. Use the Task tool to launch the issue-creator agent to apply grouping rules and create issues.\n  </commentary>\n</example>\n- <example>\n  Context: The user wants to create issues only for errors.\n  user: \"error 항목만 이슈로 만들어줘\"\n  assistant: \"issue-creator 에이전트를 사용하여 error 심각도 항목만 이슈로 생성하겠습니다.\"\n  <commentary>\n  The user wants to create issues for errors only. Use the Task tool to launch the issue-creator agent with severity filtering.\n  </commentary>\n</example>"
 tools: Bash, Read, Glob, Grep
 model: sonnet
 color: white
