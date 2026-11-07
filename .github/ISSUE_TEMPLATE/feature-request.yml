@@ -8,7 +8,7 @@ body:
       label: Target Plugin
       description: Which plugin should this feature be added to?
       options:
-        - claude-logger
+        - session-logger
         - technical-writing
         - git-workflow
         - github-workflow

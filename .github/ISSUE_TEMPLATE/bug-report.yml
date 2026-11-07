@@ -8,7 +8,7 @@ body:
       label: Affected Plugin
       description: Which plugin is affected by this bug?
       options:
-        - claude-logger
+        - session-logger
         - technical-writing
         - git-workflow
         - github-workflow

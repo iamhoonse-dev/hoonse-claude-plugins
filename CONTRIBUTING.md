@@ -38,7 +38,7 @@ cd hoonse-claude-plugins
 
 ```bash
 # 특정 플러그인 설치
-/plugin install claude-logger@hoonse-claude-plugins
+/plugin install session-logger@hoonse-claude-plugins
 /plugin install technical-writing@hoonse-claude-plugins
 /plugin install git-workflow@hoonse-claude-plugins
 /plugin install github-workflow@hoonse-claude-plugins
@@ -49,7 +49,7 @@ cd hoonse-claude-plugins
 ```json
 {
   "enabledPlugins": {
-    "claude-logger@hoonse-claude-plugins": true,
+    "session-logger@hoonse-claude-plugins": true,
     "technical-writing@hoonse-claude-plugins": true,
     "git-workflow@hoonse-claude-plugins": true,
     "github-workflow@hoonse-claude-plugins": true
@@ -68,7 +68,7 @@ hoonse-claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json              # 마켓플레이스 정의
 ├── plugins/                          # 플러그인 디렉토리
-│   ├── claude-logger/                # 로깅 플러그인
+│   ├── session-logger/                # 로깅 플러그인
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── hooks/
 │   │       ├── hooks.json

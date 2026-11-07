@@ -27,7 +27,7 @@ Closes #
 
 <!-- Check all plugins affected by this PR. -->
 
-- [ ] `claude-logger`
+- [ ] `session-logger`
 - [ ] `technical-writing`
 - [ ] `git-workflow`
 - [ ] `github-workflow`
