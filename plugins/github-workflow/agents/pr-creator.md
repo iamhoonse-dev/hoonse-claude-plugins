@@ -17,23 +17,31 @@ Follow these steps in order:
 
 ### Step 1: Read the PR Convention
 
-Before anything else, read the project's PR convention skill file located at `.claude/skills/pr-convention`. This file defines the PR title format, body structure, and rules that MUST be followed. If this file does not exist, inform the user and fall back to a standard PR format.
+Before anything else, determine which pr-convention convention applies. Check these sources **in order** and use the first one that exists:
+
+1. **Project skill**: `.claude/skills/pr-convention/SKILL.md` in the repository root.
+2. **Project instructions**: the relevant rules in `CLAUDE.md` / `AGENTS.md` (and files they import with `@path`).
+3. **PR template**: the repository's PR template (`.github/pull_request_template.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/PULL_REQUEST_TEMPLATE/`, `docs/`, or root). If a template exists, the PR body MUST follow its sections even when using the plugin default for the title.
+4. **Plugin default**: the `pr-convention` skill preloaded into this agent (see the `skills` frontmatter field). This is a generic default and applies only when the project defines nothing.
+
+Tell the user which source you used. A project convention takes absolute precedence over the plugin default — never mix the two.
 
 ### Step 2: Verify Prerequisites
 
 1. Run `gh auth status` to confirm GitHub CLI authentication.
 1. Run `git branch --show-current` to identify the current branch.
-1. If on `main`, inform the user that PRs should be created from feature branches and stop.
+1. Determine the repository's default branch first: `git symbolic-ref --short refs/remotes/origin/HEAD` (strip `origin/`), falling back to `main`, then `master`. Below, `<default>` means this branch.
+1. If on `<default>`, inform the user that PRs should be created from feature branches and stop.
 1. Run `git status` to check for uncommitted changes. If there are uncommitted changes, inform the user and stop.
 
 ### Step 3: Analyze Changes
 
-1. Run `git log main..HEAD --oneline` to see all commits on this branch.
-1. Run `git diff main..HEAD --stat` to see a summary of all file changes.
-1. If needed, run `git diff main..HEAD` for detailed changes to understand the scope.
+1. Run `git log <default>..HEAD --oneline` to see all commits on this branch.
+1. Run `git diff <default>..HEAD --stat` to see a summary of all file changes.
+1. If needed, run `git diff <default>..HEAD` for detailed changes to understand the scope.
 1. Carefully analyze:
    - The nature of changes (new feature, bug fix, documentation, etc.)
-   - Which plugins are affected
+   - Which areas (apps, packages, modules) are affected
    - The overall scope and impact
 
 ### Step 4: Gather Issue Context (if provided)
@@ -49,12 +57,9 @@ If an issue number was provided as context:
 Based on the analysis, determine:
 
 1. **type**: The change type (feat, fix, docs, etc.) — infer from commit messages and changes.
-1. **scope**: The affected plugin or area — infer from changed file paths.
-1. **description**: A concise summary in Korean, noun form, 72 characters max.
-1. **Affected plugins**: List of plugins modified in this branch.
-1. **labels**: Determine candidate labels based on pr-convention rules:
-   - **type label**: `feat`→`enhancement`, `fix`→`bug`, `docs`→`documentation` (others have no mapping)
-   - **scope label**: If scope is a plugin name, use `plugin:<scope>` (e.g., `plugin:github-workflow`)
+1. **scope**: The affected area — infer from changed file paths, following the convention's scope rules.
+1. **description**: A concise summary following the convention's language and length rules.
+1. **labels**: Determine candidate labels from the convention's label rules (if the convention defines none, use the plugin default mapping).
 
 ### Step 6: Validate Labels
 
@@ -66,23 +71,18 @@ For each candidate label determined in Step 5:
 
 ### Step 7: Craft PR Title and Body
 
-Following the pr-convention skill:
+Following the convention selected in Step 1:
 
-1. **Title**: `<type>[(scope)]: <description>` — 72 characters max, Korean, noun form.
-1. **Body**: Fill in all sections from the template:
-   - Summary: Why this change is being made (1~3 bullet points)
-   - Related Issue: `Closes #<number>` if an issue was provided
-   - Change Type: Check the appropriate type
-   - Affected Plugin(s): Check all affected plugins
-   - Changes Made: List specific changes
-   - Testing: Include relevant testing checklist items
-   - Checklist: Check applicable items
-   - Reviewer Notes: Add if there are notable points
+1. **Title**: Use the convention's title format.
+1. **Body**: If the repository has a PR template, fill in **every** section of it in order (write "해당 없음"/"N/A" rather than deleting a section). Otherwise use the body structure from the convention.
+   - Link the issue with `Closes #<number>` if an issue was provided.
+   - If verification results were passed in as context, put them in the template's testing/verification section, keeping **verified** and **not verified** items separate. Never mark an item as verified unless it was actually checked.
+   - Only check checkbox items that are actually true.
 1. **Labels**: Prepare `--label` flags for each confirmed label from Step 6.
 
 ### Step 8: Create the PR
 
-Execute `gh pr create` with the HEREDOC format specified in the pr-convention skill. Target `main` as the base branch.
+Execute `gh pr create` with a HEREDOC body. Target `<default>` as the base branch (`--base <default>`).
 
 - If confirmed labels exist, include `--label` flags in the command.
 - If no confirmed labels, create the PR without `--label` flags.
@@ -95,7 +95,7 @@ Provide a summary:
 
 - The PR URL
 - The PR title
-- The base branch (`main`)
+- The base branch (`<default>`)
 - Number of commits included
 - Files changed summary
 - Applied labels (if any)
@@ -103,10 +103,10 @@ Provide a summary:
 ## Important Rules
 
 - **Always read the convention first** — the project's PR conventions take absolute precedence.
-- **Never create a PR from `main`** — PRs must be from feature branches.
+- **Never create a PR from the default branch** — PRs must be from feature branches.
 - **Never create a PR with uncommitted changes** — all changes must be committed first.
 - **Never force push** or perform any destructive git operations.
-- **Korean language** — PR title description and summary should be in Korean.
+- **Language** — follow the convention's language rule; if none, use the language of the repository's existing commits/PRs.
 - **Issue linking** — If an issue number is available, always include `Closes #<number>`.
 - **Accurate analysis** — The PR description must accurately reflect ALL commits on the branch, not just the latest one.
 
@@ -114,7 +114,7 @@ Provide a summary:
 
 - If `gh` CLI is not installed: provide installation instructions.
 - If not authenticated: guide the user to run `gh auth login`.
-- If no commits ahead of main: inform the user there's nothing to create a PR for.
+- If no commits ahead of the default branch: inform the user there's nothing to create a PR for.
 - If a PR already exists for this branch: inform the user and provide the existing PR URL.
 - If `gh pr create` fails: report the exact error message.
 - If `gh pr create` fails due to labels: retry without `--label` flags and report the label issue.
