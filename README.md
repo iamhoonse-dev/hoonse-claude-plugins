@@ -32,8 +32,8 @@ Issue 분석부터 브랜치 생성, 구현, 커밋, PR 생성까지 하나의 �
 
 | 스킬 | 플러그인 | 설명 |
 |------|---------|------|
-| [work-on-issue](./plugins/github-workflow/skills/work-on-issue/SKILL.md) | github-workflow | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 및 커밋 → PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
-| [work-from-scratch](./plugins/github-workflow/skills/work-from-scratch/SKILL.md) | github-workflow | Issue 없이 작업 설명을 받아 브랜치 생성부터 PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
+| [work-on-issue](./plugins/github-workflow/skills/work-on-issue/SKILL.md) | github-workflow | GitHub Issue 번호를 받아 이슈 분석 → 브랜치 생성 → 계획 수립 → 구현 및 커밋 → 검증 → PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
+| [work-from-scratch](./plugins/github-workflow/skills/work-from-scratch/SKILL.md) | github-workflow | Issue 없이 작업 설명을 받아 브랜치 생성부터 검증, PR 생성까지 전체 워크플로우를 오케스트레이션합니다. |
 | [work-on-pr](./plugins/github-workflow/skills/work-on-pr/SKILL.md) | github-workflow | GitHub PR 번호를 받아 리뷰 분석 → 피드백 반영 커밋 → PR 코멘트 작성까지 리뷰 대응 워크플로우를 오케스트레이션합니다. |
 | [analyze-project](./plugins/project-analyzer/skills/analyze-project/SKILL.md) | project-analyzer | 플러그인 마켓플레이스 프로젝트를 자동 분석하여 구조·문서·설정 문제를 파악하고, 필요 시 GitHub Issue로 등록합니다. |
 
@@ -47,8 +47,9 @@ graph TB
         WOI2["② @branch-creator"]
         WOI3["③ Plan Mode"]
         WOI4["④ 코드 구현\n+ @auto-committer"]
-        WOI5["⑤ git push\n+ @pr-creator"]
-        WOI1 --> WOI2 --> WOI3 --> WOI4 --> WOI5
+        WOI5["⑤ 검증\n(pr-verification)"]
+        WOI6["⑥ git push\n+ @pr-creator"]
+        WOI1 --> WOI2 --> WOI3 --> WOI4 --> WOI5 --> WOI6
     end
 
     subgraph WOP ["/work-on-pr  (github-workflow)"]
@@ -67,8 +68,9 @@ graph TB
         WFS2["② @branch-creator"]
         WFS3["③ Plan Mode"]
         WFS4["④ 코드 구현\n+ @auto-committer"]
-        WFS5["⑤ git push\n+ @pr-creator"]
-        WFS1 --> WFS2 --> WFS3 --> WFS4 --> WFS5
+        WFS5["⑤ 검증\n(pr-verification)"]
+        WFS6["⑥ git push\n+ @pr-creator"]
+        WFS1 --> WFS2 --> WFS3 --> WFS4 --> WFS5 --> WFS6
     end
 
     subgraph ANAP ["/analyze-project  (project-analyzer)"]

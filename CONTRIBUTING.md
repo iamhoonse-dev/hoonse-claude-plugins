@@ -242,7 +242,7 @@ memory:
 
 ## 📝 커밋 규약
 
-이 프로젝트는 [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) 스펙을 따릅니다. 자세한 규약은 `git-workflow` 플러그인의 `commit-message` 스킬을 참고하세요.
+이 프로젝트는 [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) 스펙을 따릅니다. 자세한 규약은 이 레포의 [`.claude/skills/commit-message`](.claude/skills/commit-message/SKILL.md) 를 참고하세요. (`git-workflow` 플러그인의 `commit-message` 스킬은 다른 프로젝트용 범용 기본 규약입니다)
 
 ### 메시지 형식
 
