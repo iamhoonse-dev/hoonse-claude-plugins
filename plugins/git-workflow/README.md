@@ -112,6 +112,7 @@ Agents는 대화 중 관련 요청 시 자동으로 활성화되거나, 직접 �
 | PreToolUse (Bash) | `block-default-branch-commit.sh` | `git commit` 명령이 기본 브랜치(`main`, `master`, 원격 HEAD 가 가리키는 브랜치)에서 실행되면 차단합니다. |
 
 - `git -C <dir> commit`, 맨 앞의 `cd <dir> && git commit` 도 대상 레포를 판별해 검사합니다.
+- 따옴표 안의 문자열과 heredoc 본문에 있는 `git commit` 문구는 커밋으로 보지 않습니다. (예: `gh issue create --body "... git commit ..."`)
 - 커밋이 하나도 없는 빈 레포의 **첫 커밋은 허용**합니다.
 - 사용자가 기본 브랜치 커밋을 명시적으로 허락한 경우, 명령 앞에 `GIT_WORKFLOW_ALLOW_DEFAULT_BRANCH_COMMIT=1` 을 붙이면 통과합니다.
 - `jq` 가 필요합니다. 없으면 검사하지 않고 통과시킵니다.
